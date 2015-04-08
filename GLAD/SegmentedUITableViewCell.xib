@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SegmentedWidgetCell" rowHeight="44" id="bRy-kR-3yu" customClass="SegmentedUITableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bRy-kR-3yu" id="yhQ-0e-uIF">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <segmentedControl opaque="NO" tag="500" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u1V-Oz-SA2">
+                        <rect key="frame" x="500" y="10" width="43" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="43" id="5LY-jY-l6L"/>
+                        </constraints>
+                        <segments>
+                            <segment title="" width="61"/>
+                            <segment title="" width="61"/>
+                        </segments>
+                    </segmentedControl>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8G9-Kk-pwd">
+                        <rect key="frame" x="8" y="8" width="484" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="8G9-Kk-pwd" firstAttribute="top" secondItem="yhQ-0e-uIF" secondAttribute="topMargin" id="1N8-PV-p1H"/>
+                    <constraint firstItem="8G9-Kk-pwd" firstAttribute="leading" secondItem="yhQ-0e-uIF" secondAttribute="leadingMargin" id="69x-GU-aFe"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="8G9-Kk-pwd" secondAttribute="bottom" constant="-2" id="6C2-5n-DX9"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="u1V-Oz-SA2" secondAttribute="trailing" constant="49" id="OCK-i9-let"/>
+                    <constraint firstItem="u1V-Oz-SA2" firstAttribute="leading" secondItem="8G9-Kk-pwd" secondAttribute="trailing" constant="8" id="eiH-Gu-XjU"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="u1V-Oz-SA2" secondAttribute="bottom" constant="-1" id="k9n-RV-RjR"/>
+                    <constraint firstItem="u1V-Oz-SA2" firstAttribute="top" secondItem="yhQ-0e-uIF" secondAttribute="topMargin" constant="2" id="zng-vE-ocB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <accessibility key="accessibilityConfiguration">
+                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+            </accessibility>
+            <point key="canvasLocation" x="281" y="348"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RollershutterWidgetCell" rowHeight="44" id="eI8-xI-zh2" customClass="RollershutterUITableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eI8-xI-zh2" id="IMV-8V-hDg">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" tag="603" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAE-9T-6uC" customClass="UICircleButton">
+                        <rect key="frame" x="550" y="7" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="j3w-yg-UfY"/>
+                            <constraint firstAttribute="height" constant="30" id="ruz-Go-Dwb"/>
+                        </constraints>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" tag="602" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxv-Tc-CbY" customClass="UICircleButton">
+                        <rect key="frame" x="512" y="7" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="9lw-wY-kSo"/>
+                            <constraint firstAttribute="height" constant="30" id="AfA-OU-bNJ"/>
+                        </constraints>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" tag="601" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zb-Mq-x3k" customClass="UICircleButton">
+                        <rect key="frame" x="474" y="7" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="WWK-gh-4JG"/>
+                            <constraint firstAttribute="height" constant="30" id="XzH-rE-gKF"/>
+                        </constraints>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7f3-83-QLI">
+                        <rect key="frame" x="62" y="11" width="404" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="JAE-9T-6uC" firstAttribute="top" secondItem="5zb-Mq-x3k" secondAttribute="top" id="7UT-lu-FsK"/>
+                    <constraint firstItem="Hxv-Tc-CbY" firstAttribute="leading" secondItem="5zb-Mq-x3k" secondAttribute="trailing" constant="8" id="AnB-tA-N93"/>
+                    <constraint firstAttribute="trailing" secondItem="JAE-9T-6uC" secondAttribute="trailing" constant="20" id="Ap6-H9-i4U"/>
+                    <constraint firstItem="JAE-9T-6uC" firstAttribute="baseline" secondItem="Hxv-Tc-CbY" secondAttribute="baseline" id="Cpb-MK-lPq"/>
+                    <constraint firstItem="5zb-Mq-x3k" firstAttribute="leading" secondItem="7f3-83-QLI" secondAttribute="trailing" constant="8" id="F0f-Eb-y4U"/>
+                    <constraint firstItem="7f3-83-QLI" firstAttribute="centerY" secondItem="IMV-8V-hDg" secondAttribute="centerY" id="PAQ-UO-bY5"/>
+                    <constraint firstItem="JAE-9T-6uC" firstAttribute="baseline" secondItem="5zb-Mq-x3k" secondAttribute="baseline" id="Qcw-LA-b4n"/>
+                    <constraint firstItem="JAE-9T-6uC" firstAttribute="firstBaseline" secondItem="Hxv-Tc-CbY" secondAttribute="firstBaseline" id="a65-bH-AA7"/>
+                    <constraint firstItem="JAE-9T-6uC" firstAttribute="top" secondItem="Hxv-Tc-CbY" secondAttribute="top" id="eES-yz-2L7"/>
+                    <constraint firstItem="JAE-9T-6uC" firstAttribute="firstBaseline" secondItem="5zb-Mq-x3k" secondAttribute="firstBaseline" id="jyT-k8-Q1P"/>
+                    <constraint firstItem="7f3-83-QLI" firstAttribute="top" secondItem="IMV-8V-hDg" secondAttribute="topMargin" constant="3" id="qae-3x-euB"/>
+                    <constraint firstItem="7f3-83-QLI" firstAttribute="leading" secondItem="IMV-8V-hDg" secondAttribute="leading" constant="62" id="qdY-F3-KOF"/>
+                    <constraint firstItem="JAE-9T-6uC" firstAttribute="top" secondItem="IMV-8V-hDg" secondAttribute="topMargin" constant="-1" id="xrd-Ij-qA5"/>
+                    <constraint firstItem="JAE-9T-6uC" firstAttribute="leading" secondItem="Hxv-Tc-CbY" secondAttribute="trailing" constant="8" id="yTE-Ug-W1r"/>
+                </constraints>
+            </tableViewCellContentView>
+            <accessibility key="accessibilityConfiguration">
+                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+            </accessibility>
+        </tableViewCell>
+    </objects>
+</document>
