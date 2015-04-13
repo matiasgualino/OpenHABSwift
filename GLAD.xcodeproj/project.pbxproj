@@ -18,10 +18,10 @@
 		0F326D221ACE313F00D2CC50 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F326D211ACE313F00D2CC50 /* AVFoundation.framework */; };
 		0F326D251ACE33B000D2CC50 /* UICircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F326D241ACE33B000D2CC50 /* UICircleButton.swift */; };
 		0F326D271ACE35DC00D2CC50 /* UIAlertView+Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F326D261ACE35DC00D2CC50 /* UIAlertView+Block.swift */; };
+		0F383A9A1AD7653700B1DFCD /* OpenHABSelectSitemapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F383A981AD7653700B1DFCD /* OpenHABSelectSitemapViewController.swift */; };
+		0F383A9B1AD7653700B1DFCD /* OpenHABSelectSitemapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F383A991AD7653700B1DFCD /* OpenHABSelectSitemapViewController.xib */; };
 		0F38A06A1AC7214000AACCCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F38A0691AC7214000AACCCA /* AppDelegate.swift */; };
 		0F38A06D1AC7214000AACCCA /* GLAD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F38A06B1AC7214000AACCCA /* GLAD.xcdatamodeld */; };
-		0F38A06F1AC7214000AACCCA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F38A06E1AC7214000AACCCA /* ViewController.swift */; };
-		0F38A0721AC7214000AACCCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F38A0701AC7214000AACCCA /* Main.storyboard */; };
 		0F38A0741AC7214000AACCCA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F38A0731AC7214000AACCCA /* Images.xcassets */; };
 		0F38A0771AC7214000AACCCA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F38A0751AC7214000AACCCA /* LaunchScreen.xib */; };
 		0F38A08D1AC7214F00AACCCA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F38A08C1AC7214F00AACCCA /* Security.framework */; };
@@ -29,6 +29,11 @@
 		0F38A0911AC7216A00AACCCA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F38A0901AC7216A00AACCCA /* UIKit.framework */; };
 		0F38A0931AC7217200AACCCA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F38A0921AC7217200AACCCA /* CoreGraphics.framework */; };
 		0F38A0961AC7237800AACCCA /* OpenHABItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F38A0951AC7237800AACCCA /* OpenHABItem.swift */; };
+		0F54AECC1AD643D90027DB72 /* NSMutableURLRequest+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F54AECB1AD643D90027DB72 /* NSMutableURLRequest+Auth.swift */; };
+		0F54AEE21AD6AD270027DB72 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0F54AED81AD6ACF50027DB72 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0F54AEE51AD6AFF20027DB72 /* OpenHABSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F54AEE31AD6AFF20027DB72 /* OpenHABSelectionTableViewController.swift */; };
+		0F54AEE61AD6AFF20027DB72 /* OpenHABSelectionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F54AEE41AD6AFF20027DB72 /* OpenHABSelectionTableViewController.xib */; };
+		0F9367B91AD9BE12001BD70B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9367B81AD9BE12001BD70B /* SystemConfiguration.framework */; };
 		0F98820C1ACE59D200F750F0 /* GenericUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F98820B1ACE59D200F750F0 /* GenericUITableViewCell.swift */; };
 		0F98820E1ACEE65100F750F0 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F98820D1ACEE65100F750F0 /* UIColor+Extensions.swift */; };
 		0F9882101ACEEB4100F750F0 /* FrameUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F98820F1ACEEB4100F750F0 /* FrameUITableViewCell.swift */; };
@@ -63,6 +68,58 @@
 		696AB18ECA5B2D1D883B91C0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA69762C1537996DA7811263 /* libPods.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0F54AED71AD6ACF50027DB72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F54AED01AD6ACF50027DB72 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		0F54AED91AD6ACF50027DB72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F54AED01AD6ACF50027DB72 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire OSX";
+		};
+		0F54AEDB1AD6ACF50027DB72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F54AED01AD6ACF50027DB72 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS Tests";
+		};
+		0F54AEDD1AD6ACF50027DB72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F54AED01AD6ACF50027DB72 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
+			remoteInfo = "Alamofire OSX Tests";
+		};
+		0F54AEDF1AD6AD030027DB72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F54AED01AD6ACF50027DB72 /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0F54AEE11AD6AD0E0027DB72 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0F54AEE21AD6AD270027DB72 /* Alamofire.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0F133CC41AC73FBF001256C8 /* OpenHABSitemapPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenHABSitemapPage.swift; sourceTree = "<group>"; };
 		0F133CC61AC73FFB001256C8 /* OpenHABWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenHABWidget.swift; sourceTree = "<group>"; };
@@ -76,12 +133,12 @@
 		0F326D211ACE313F00D2CC50 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0F326D241ACE33B000D2CC50 /* UICircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircleButton.swift; sourceTree = "<group>"; };
 		0F326D261ACE35DC00D2CC50 /* UIAlertView+Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertView+Block.swift"; sourceTree = "<group>"; };
+		0F383A981AD7653700B1DFCD /* OpenHABSelectSitemapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenHABSelectSitemapViewController.swift; sourceTree = "<group>"; };
+		0F383A991AD7653700B1DFCD /* OpenHABSelectSitemapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenHABSelectSitemapViewController.xib; sourceTree = "<group>"; };
 		0F38A0641AC7214000AACCCA /* GLAD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLAD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F38A0681AC7214000AACCCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F38A0691AC7214000AACCCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F38A06C1AC7214000AACCCA /* GLAD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GLAD.xcdatamodel; sourceTree = "<group>"; };
-		0F38A06E1AC7214000AACCCA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0F38A0711AC7214000AACCCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F38A0731AC7214000AACCCA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0F38A0761AC7214000AACCCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0F38A0811AC7214000AACCCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +148,11 @@
 		0F38A0901AC7216A00AACCCA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0F38A0921AC7217200AACCCA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0F38A0951AC7237800AACCCA /* OpenHABItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenHABItem.swift; sourceTree = "<group>"; };
+		0F54AECB1AD643D90027DB72 /* NSMutableURLRequest+Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableURLRequest+Auth.swift"; sourceTree = "<group>"; };
+		0F54AED01AD6ACF50027DB72 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
+		0F54AEE31AD6AFF20027DB72 /* OpenHABSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenHABSelectionTableViewController.swift; sourceTree = "<group>"; };
+		0F54AEE41AD6AFF20027DB72 /* OpenHABSelectionTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenHABSelectionTableViewController.xib; sourceTree = "<group>"; };
+		0F9367B81AD9BE12001BD70B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0F98820B1ACE59D200F750F0 /* GenericUITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUITableViewCell.swift; sourceTree = "<group>"; };
 		0F98820D1ACEE65100F750F0 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		0F98820F1ACEEB4100F750F0 /* FrameUITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameUITableViewCell.swift; sourceTree = "<group>"; };
@@ -132,6 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F9367B91AD9BE12001BD70B /* SystemConfiguration.framework in Frameworks */,
 				0F326D221ACE313F00D2CC50 /* AVFoundation.framework in Frameworks */,
 				0F38A0931AC7217200AACCCA /* CoreGraphics.framework in Frameworks */,
 				0F38A0911AC7216A00AACCCA /* UIKit.framework in Frameworks */,
@@ -150,6 +213,7 @@
 				0F9886221AD4C17600F750F0 /* OpenHABTracker.swift */,
 				0F9886241AD4C1E600F750F0 /* Reachability.swift */,
 				0F9886421AD4FCDE00F750F0 /* Reachability+URL.swift */,
+				0F54AECB1AD643D90027DB72 /* NSMutableURLRequest+Auth.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -161,6 +225,10 @@
 				0F326D231ACE339C00D2CC50 /* Util */,
 				0F326D1D1ACE2E8C00D2CC50 /* OpenHABViewController.swift */,
 				0F326D1E1ACE2E8C00D2CC50 /* OpenHABViewController.xib */,
+				0F54AEE31AD6AFF20027DB72 /* OpenHABSelectionTableViewController.swift */,
+				0F54AEE41AD6AFF20027DB72 /* OpenHABSelectionTableViewController.xib */,
+				0F383A981AD7653700B1DFCD /* OpenHABSelectSitemapViewController.swift */,
+				0F383A991AD7653700B1DFCD /* OpenHABSelectSitemapViewController.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -178,6 +246,7 @@
 		0F38A05B1AC7214000AACCCA = {
 			isa = PBXGroup;
 			children = (
+				0F54AED01AD6ACF50027DB72 /* Alamofire.xcodeproj */,
 				0F38A0921AC7217200AACCCA /* CoreGraphics.framework */,
 				0F38A0901AC7216A00AACCCA /* UIKit.framework */,
 				0F38A08E1AC7216200AACCCA /* Foundation.framework */,
@@ -205,8 +274,6 @@
 				0F133CCC1AC74A24001256C8 /* Utils */,
 				0F38A0941AC7236600AACCCA /* Model */,
 				0F38A0691AC7214000AACCCA /* AppDelegate.swift */,
-				0F38A06E1AC7214000AACCCA /* ViewController.swift */,
-				0F38A0701AC7214000AACCCA /* Main.storyboard */,
 				0F38A0731AC7214000AACCCA /* Images.xcassets */,
 				0F38A0751AC7214000AACCCA /* LaunchScreen.xib */,
 				0F38A06B1AC7214000AACCCA /* GLAD.xcdatamodeld */,
@@ -255,6 +322,17 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		0F54AED11AD6ACF50027DB72 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0F54AED81AD6ACF50027DB72 /* Alamofire.framework */,
+				0F54AEDA1AD6ACF50027DB72 /* Alamofire.framework */,
+				0F54AEDC1AD6ACF50027DB72 /* Alamofire iOS Tests.xctest */,
+				0F54AEDE1AD6ACF50027DB72 /* Alamofire OSX Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		0F98820A1ACE53EF00F750F0 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +379,7 @@
 		B313226152D16756BF69FEB7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F9367B81AD9BE12001BD70B /* SystemConfiguration.framework */,
 				0F326D211ACE313F00D2CC50 /* AVFoundation.framework */,
 				AA69762C1537996DA7811263 /* libPods.a */,
 			);
@@ -319,10 +398,12 @@
 				0F38A0611AC7214000AACCCA /* Frameworks */,
 				0F38A0621AC7214000AACCCA /* Resources */,
 				04B65C63A0447D91036B5823 /* Copy Pods Resources */,
+				0F54AEE11AD6AD0E0027DB72 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0F54AEE01AD6AD030027DB72 /* PBXTargetDependency */,
 			);
 			name = GLAD;
 			productName = GLAD;
@@ -354,12 +435,49 @@
 			mainGroup = 0F38A05B1AC7214000AACCCA;
 			productRefGroup = 0F38A0651AC7214000AACCCA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0F54AED11AD6ACF50027DB72 /* Products */;
+					ProjectRef = 0F54AED01AD6ACF50027DB72 /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				0F38A0631AC7214000AACCCA /* GLAD */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0F54AED81AD6ACF50027DB72 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 0F54AED71AD6ACF50027DB72 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0F54AEDA1AD6ACF50027DB72 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 0F54AED91AD6ACF50027DB72 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0F54AEDC1AD6ACF50027DB72 /* Alamofire iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire iOS Tests.xctest";
+			remoteRef = 0F54AEDB1AD6ACF50027DB72 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0F54AEDE1AD6ACF50027DB72 /* Alamofire OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire OSX Tests.xctest";
+			remoteRef = 0F54AEDD1AD6ACF50027DB72 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0F38A0621AC7214000AACCCA /* Resources */ = {
@@ -368,8 +486,8 @@
 			files = (
 				0F98863B1AD4ED7900F750F0 /* ChartUITableViewCell.xib in Resources */,
 				0F9886351AD4EAEC00F750F0 /* RollershutterUITableViewCell.xib in Resources */,
+				0F54AEE61AD6AFF20027DB72 /* OpenHABSelectionTableViewController.xib in Resources */,
 				0F9886391AD4ED1E00F750F0 /* ColorPickerUITableViewCell.xib in Resources */,
-				0F38A0721AC7214000AACCCA /* Main.storyboard in Resources */,
 				0F9886411AD4EDCA00F750F0 /* VideoUITableViewCell.xib in Resources */,
 				0F38A0771AC7214000AACCCA /* LaunchScreen.xib in Resources */,
 				0F9886331AD4E1FF00F750F0 /* SegmentedUITableViewCell.xib in Resources */,
@@ -379,6 +497,7 @@
 				0F98862F1AD4DFEA00F750F0 /* SetpointUITableViewCell.xib in Resources */,
 				0F9886311AD4E0CA00F750F0 /* SliderUITableViewCell.xib in Resources */,
 				0F9886291AD4DEEF00F750F0 /* GenericUITableViewCell.xib in Resources */,
+				0F383A9B1AD7653700B1DFCD /* OpenHABSelectSitemapViewController.xib in Resources */,
 				0F38A0741AC7214000AACCCA /* Images.xcassets in Resources */,
 				0F98862B1AD4DF2400F750F0 /* FrameUITableViewCell.xib in Resources */,
 				0F98863D1AD4ED9B00F750F0 /* ImageUITableViewCell.xib in Resources */,
@@ -426,6 +545,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F383A9A1AD7653700B1DFCD /* OpenHABSelectSitemapViewController.swift in Sources */,
 				0F133CC51AC73FBF001256C8 /* OpenHABSitemapPage.swift in Sources */,
 				0F9886231AD4C17600F750F0 /* OpenHABTracker.swift in Sources */,
 				0F9882141ACEEF2500F750F0 /* SetpointUITableViewCell.swift in Sources */,
@@ -439,7 +559,6 @@
 				0F1C4C791AC73014003534FD /* OpenHABLinkedPage.swift in Sources */,
 				0F326D271ACE35DC00D2CC50 /* UIAlertView+Block.swift in Sources */,
 				0F38A0961AC7237800AACCCA /* OpenHABItem.swift in Sources */,
-				0F38A06F1AC7214000AACCCA /* ViewController.swift in Sources */,
 				0F9882281AD0356F00F750F0 /* ChartUITableViewCell.swift in Sources */,
 				0F326D1B1ACE2E4F00D2CC50 /* OpenHABDataObject.swift in Sources */,
 				0F9882221ACF9D6B00F750F0 /* ImageUITableViewCell.swift in Sources */,
@@ -452,9 +571,11 @@
 				0F9882181ACEF42B00F750F0 /* SegmentedUITableViewCell.swift in Sources */,
 				0F9886431AD4FCDE00F750F0 /* Reachability+URL.swift in Sources */,
 				0F326D1F1ACE2E8C00D2CC50 /* OpenHABViewController.swift in Sources */,
+				0F54AEE51AD6AFF20027DB72 /* OpenHABSelectionTableViewController.swift in Sources */,
 				0F9882161ACEF24C00F750F0 /* SliderUITableViewCell.swift in Sources */,
 				0F38A06D1AC7214000AACCCA /* GLAD.xcdatamodeld in Sources */,
 				0F9882261AD034E700F750F0 /* VideoUITableViewCell.swift in Sources */,
+				0F54AECC1AD643D90027DB72 /* NSMutableURLRequest+Auth.swift in Sources */,
 				0F133CC71AC73FFB001256C8 /* OpenHABWidget.swift in Sources */,
 				0F326D251ACE33B000D2CC50 /* UICircleButton.swift in Sources */,
 			);
@@ -462,15 +583,15 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		0F38A0701AC7214000AACCCA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F38A0711AC7214000AACCCA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		0F54AEE01AD6AD030027DB72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Alamofire iOS";
+			targetProxy = 0F54AEDF1AD6AD030027DB72 /* PBXContainerItemProxy */;
 		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
 		0F38A0751AC7214000AACCCA /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -568,9 +689,13 @@
 			baseConfigurationReference = CC46AD3D5F4BAD4876687E50 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = GLAD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "502e67a7-7bef-4a5c-b401-ae0949527827";
 				SWIFT_OBJC_BRIDGING_HEADER = "GLAD/GLAD-Bridging-Header.h";
 			};
 			name = Debug;
@@ -580,9 +705,13 @@
 			baseConfigurationReference = 97777C6CC4144A42C45AEDAB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = GLAD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "502e67a7-7bef-4a5c-b401-ae0949527827";
 				SWIFT_OBJC_BRIDGING_HEADER = "GLAD/GLAD-Bridging-Header.h";
 			};
 			name = Release;

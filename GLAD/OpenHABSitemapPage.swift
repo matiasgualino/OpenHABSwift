@@ -45,23 +45,41 @@ class OpenHABSitemapPage : OpenHABSitemapPageDelegate, OpenHABWidgetDelegate {
         return sitemapPage
     }
     
-    class func initWithXML(xmlElement: GDataXMLElement) -> OpenHABItem {
-        var item = OpenHABItem()
-        for child in xmlElement.children() {
-            let childElement = child as? GDataXMLElement
-            if childElement != nil {
-                if childElement!.name() == "type" {
-                    item.type = childElement!.stringValue()
-                } else if childElement!.name() == "name" {
-                    item.name = childElement!.stringValue()
-                } else if childElement!.name() == "state" {
-                    item.state = childElement!.stringValue()
-                } else if childElement!.name() == "link" {
-                    item.link = childElement!.stringValue()
+    class func initWithXML(xmlElement: GDataXMLElement) -> OpenHABSitemapPage {
+        var sitemapPage = OpenHABSitemapPage()
+        sitemapPage.widgets = [OpenHABWidget]()
+        for ch in xmlElement.children() {
+            var child = ch as? GDataXMLElement
+            if child!.name() != "widget" {
+                if child!.name() == "id" {
+                    sitemapPage.pageId = child!.stringValue()
+                } else if child!.name() == "title" {
+                    sitemapPage.title = child!.stringValue()
+                } else if child!.name() == "link" {
+                    sitemapPage.link = child!.stringValue()
+                } else if child!.name() == "leaf" {
+                    sitemapPage.leaf = child!.stringValue()
+                }
+            } else {
+                var newWidget : OpenHABWidget = OpenHABWidget.initWithXML(child!)
+                newWidget.delegate = sitemapPage
+                sitemapPage.widgets.append(newWidget)
+                var widgetsArr : [GDataXMLElement]? = child!.elementsForName("widget") as? [GDataXMLElement]
+                if widgetsArr != nil {
+                    if widgetsArr!.count > 0 {
+                        for cc in child!.elementsForName("widget")! {
+                            var childchild = cc as? GDataXMLElement
+                            if child?.name() == "widget" {
+                                var newChildWidget : OpenHABWidget = OpenHABWidget.initWithXML(childchild!)
+                                newChildWidget.delegate = sitemapPage
+                                sitemapPage.widgets.append(newChildWidget)
+                            }
+                        }
+                    }
                 }
             }
         }
-        return item
+        return sitemapPage
     }
     
 }

@@ -10,33 +10,18 @@ import Foundation
 import UIKit
 
 class GenericUITableViewCell : UITableViewCell {
-    override var textLabel: UILabel? {
-        get {
-            return self.textLabel
-        }
-        set {
-            self.textLabel = newValue
-        }
-    }
-    
-    override var detailTextLabel: UILabel? {
-        get {
-            return self.detailTextLabel
-        }
-        set {
-            self.detailTextLabel = newValue
-        }
-    }
     
     var widget : OpenHABWidget!
     var disclosureConstraints : [NSLayoutConstraint]!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.textLabel = self.viewWithTag(101) as? UILabel
-        self.detailTextLabel = self.viewWithTag(100) as? UILabel
+        //        self.textLabel = self.viewWithTag(101) as? UILabel
+        //self.detailTextLabel = self.viewWithTag(100) as? UILabel
         self.selectionStyle = UITableViewCellSelectionStyle.None
         self.separatorInset = UIEdgeInsetsZero
+        self.detailTextLabel?.textColor = UIColor.whiteColor()
+        self.textLabel?.textColor = UIColor.whiteColor()
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -73,31 +58,33 @@ class GenericUITableViewCell : UITableViewCell {
             disclosureConstraints = nil
         }
         
-        if self.accessoryType == UITableViewCellAccessoryType.None {
+       /* if self.accessoryType == UITableViewCellAccessoryType.None {
             // If accessory is disabled, set detailTextLabel (widget value) constraing 20px to the right for padding to the right side of table view
             if self.detailTextLabel != nil {
-                self.disclosureConstraints = NSLayoutConstraint.constraintsWithVisualFormat("[detailTextLabel]-20.0-|", options: 0, metrics: nil, views: NSDictionaryOfVariableBindings(detailTextLabel))
+                self.disclosureConstraints = NSLayoutConstraint.constraintsWithVisualFormat("[detailTextLabel]-20.0-|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: ["detailTextLabel" : detailTextLabel!]) as? [NSLayoutConstraint]
                 self.addConstraints(disclosureConstraints)
             }
         } else {
                 // If accessory is enabled, set detailTextLabel (widget value) constraint 0px to the right               
                 if self.detailTextLabel != nil {
-                    self.disclosureConstraints = NSLayoutConstraint.constraintsWithVisualFormat("[detailTextLabel]|", options: 0, metrics: nil, views: NSDictionaryOfVariableBindings(detailTextLabel))
+                    self.disclosureConstraints = NSLayoutConstraint.constraintsWithVisualFormat("[detailTextLabel]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: ["detailTextLabel" : detailTextLabel!]) as? [NSLayoutConstraint]
                     self.addConstraints(disclosureConstraints)
                 }
-        }
+        }*/
         
         if self.widget.valuecolor != nil {
             self.detailTextLabel?.textColor = UIColor.colorWithHexString(self.widget.valuecolor)
         } else {
-            self.detailTextLabel?.textColor = UIColor.lightGrayColor()
+            self.detailTextLabel?.textColor = UIColor.whiteColor()
         }
         
         if self.widget.labelcolor != nil {
             self.textLabel?.textColor = UIColor.colorWithHexString(self.widget.labelcolor)
         } else {
-            self.textLabel?.textColor = UIColor.blackColor()
+            self.textLabel?.textColor = UIColor.whiteColor()
         }
         
+        self.detailTextLabel?.font = UIFont(name: "HelveticaNeue", size: 14.0)
+        self.textLabel?.font = UIFont(name: "HelveticaNeue", size: 15.0)
     }
 }

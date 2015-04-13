@@ -16,6 +16,14 @@ class ColorPickerViewController : UIViewController {
         super.init(coder: aDecoder)
     }
     
+    override init() {
+        super.init()
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
     override func viewDidLoad() {
         var colorDidChangeBlock : NKOColorPickerDidChangeColorBlock = {
             (color: UIColor!) in Void()
@@ -27,7 +35,7 @@ class ColorPickerViewController : UIViewController {
             hue = hue*360
             saturation = saturation*100
             brightness = brightness*100
-            var command = String(format: "%f,%f,%f", arguments: [hue, saturation, brightness])
+            var command = String(format: "%.2f,%.2f,%.2f", arguments: [hue, saturation, brightness])
             self.widget.sendCommand(command)
         }
         

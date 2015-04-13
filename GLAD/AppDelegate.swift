@@ -29,6 +29,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, error: nil)
         var doSetProperty = 1;
         println("didFinishLaunchingWithOptions ended")
+
+        NSUserDefaults.standardUserDefaults().setValue("diego", forKey: "username")
+        NSUserDefaults.standardUserDefaults().setValue("openhab", forKey: "password")
+        NSUserDefaults.standardUserDefaults().setValue("http://diegogr.no-ip.biz:8080", forKey: "localUrl")
+        NSUserDefaults.standardUserDefaults().setValue("http://diegogr.no-ip.biz:8080", forKey: "remoteUrl")
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        var navController : UINavigationController = UINavigationController(rootViewController: OpenHABViewController())
+        navController.navigationBar.barTintColor = UIColor.colorWithHexString("#ED605B")
+        navController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navController.navigationBar.tintColor = UIColor.whiteColor()
+        self.window?.rootViewController = navController
+        
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
     

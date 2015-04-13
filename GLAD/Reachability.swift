@@ -24,9 +24,13 @@ POSSIBILITY OF SUCH DAMAGE.
 import SystemConfiguration
 import Foundation
 
-let ReachabilityChangedNotification = "ReachabilityChangedNotification"
+
 
 class Reachability: NSObject, Printable {
+
+    class var ReachabilityChangedNotification : String {
+        return "ReachabilityChangedNotification"
+    }
     
     typealias NetworkReachable = (Reachability) -> ()
     typealias NetworkUneachable = (Reachability) -> ()
@@ -209,7 +213,7 @@ class Reachability: NSObject, Printable {
             }
         }
         
-        NSNotificationCenter.defaultCenter().postNotificationName(ReachabilityChangedNotification, object:self)
+        NSNotificationCenter.defaultCenter().postNotificationName(Reachability.ReachabilityChangedNotification, object:self)
     }
     
     private func isReachableWithFlags(flags: SCNetworkReachabilityFlags) -> Bool {

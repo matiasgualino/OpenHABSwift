@@ -51,6 +51,18 @@ class OpenHABWidget : NSObject {
                         widget.mappings.append(mapping)
                     } else if childElement!.name() == "linkedPage" {
                         widget.linkedPage = OpenHABLinkedPage.initWithXML(childElement!)
+                    } else if childElement!.name() == "type" {
+                        widget.type = childElement?.stringValue()
+                    } else if childElement!.name() == "icon" {
+                        widget.icon = childElement?.stringValue()
+                    } else if childElement!.name() == "url" {
+                        widget.url = childElement?.stringValue()
+                    } else if childElement!.name() == "label" {
+                        widget.label = childElement?.stringValue()
+                    } else if childElement!.name() == "text" {
+                        widget.text = childElement?.stringValue()
+                    } else if childElement!.name() == "step" {
+                        widget.step = childElement?.stringValue()
                     } else {
                         // TODO : LOAD MORE VARIABLES
                     }
@@ -96,7 +108,7 @@ class OpenHABWidget : NSObject {
     func labelValue() -> String? {
         var array = (self.label as String).componentsSeparatedByString("[")
         if array.count > 1 {
-           var valueString = (array[0] as NSString)
+           var valueString = (array[1] as NSString)
             while valueString.hasSuffix("]") || valueString.hasSuffix(" ") {
                 valueString = valueString.substringToIndex(valueString.length - 1)
             }

@@ -10,16 +10,7 @@ import Foundation
 import UIKit
 
 class SegmentedUITableViewCell : GenericUITableViewCell {
-    
-    override var textLabel: UILabel? {
-        get {
-            return self.textLabel
-        }
-        set {
-            self.textLabel = newValue
-        }
-    }
-    
+
     var widgetSegmentedControl : UISegmentedControl!
     
     required init(coder aDecoder: NSCoder) {
@@ -34,13 +25,13 @@ class SegmentedUITableViewCell : GenericUITableViewCell {
         widgetSegmentedControl.apportionsSegmentWidthsByContent = true
         self.widgetSegmentedControl.removeAllSegments()
         self.widgetSegmentedControl.apportionsSegmentWidthsByContent = true
+                self.widgetSegmentedControl.addTarget(self, action: "pickOne:", forControlEvents: UIControlEvents.ValueChanged)
         var i = 0
         for mapping in self.widget.mappings {
             self.widgetSegmentedControl.insertSegmentWithTitle(mapping.label, atIndex: i, animated: false)
             i++
         }
         self.widgetSegmentedControl.selectedSegmentIndex = self.widget.mappingIndexByCommand(self.widget.item.state)
-        self.widgetSegmentedControl.addTarget(self, action: "pickOne:", forControlEvents: UIControlEvents.ValueChanged)
     }
     
     func pickOne(sender: AnyObject) {

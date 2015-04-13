@@ -10,16 +10,7 @@ import Foundation
 import UIKit
 
 class SetpointUITableViewCell : GenericUITableViewCell {
-    
-    override var textLabel: UILabel? {
-        get {
-            return self.textLabel
-        }
-        set {
-            self.textLabel = newValue
-        }
-    }
-    
+
     var widgetSegmentedControl : UISegmentedControl!
     
     required init(coder aDecoder: NSCoder) {
@@ -66,10 +57,10 @@ class SetpointUITableViewCell : GenericUITableViewCell {
             } else {
                 if self.widget.maxValue != nil {
                     if self.widget.item.stateAsFloat() + (self.widget.step as NSString).floatValue <= (self.widget.maxValue as NSString).floatValue {
-                        self.widget.sendCommand(String(format:"%.01f", self.widget.item.stateAsFloat() - (self.widget.step as NSString).floatValue))
+                        self.widget.sendCommand(String(format:"%.01f", self.widget.item.stateAsFloat() + (self.widget.step as NSString).floatValue))
                     }
                 } else {
-                    self.widget.sendCommand(String(format:"%.01f", self.widget.item.stateAsFloat() - (self.widget.step as NSString).floatValue))
+                    self.widget.sendCommand(String(format:"%.01f", self.widget.item.stateAsFloat() + (self.widget.step as NSString).floatValue))
                 }
             }
         }

@@ -22,7 +22,7 @@ class UICircleButton : UIButton {
         self.layer.borderColor = self.titleLabel?.textColor.CGColor
         self.addTarget(self, action: "buttonActionReleased", forControlEvents: UIControlEvents.TouchUpInside)
         self.addTarget(self, action: "buttonActionTouched", forControlEvents: UIControlEvents.TouchDown)
-        normalBackgroundColor = self.backgroundColor!
+        normalBackgroundColor = self.backgroundColor
     }
     
     func buttonActionReleased() {
@@ -33,7 +33,7 @@ class UICircleButton : UIButton {
         self.backgroundColor = normalTextColor
         normalTextColor = self.titleLabel?.textColor
         self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "timerTicked", userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "timerTicked:", userInfo: nil, repeats: false)
     }
     
     func timerTicked(timer: NSTimer) {
