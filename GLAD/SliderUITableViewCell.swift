@@ -11,7 +11,8 @@ import UIKit
 
 class SliderUITableViewCell : GenericUITableViewCell {
     var widgetSlider : UISlider!
-    
+    @IBOutlet weak private var label : UILabel!
+	
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.widgetSlider = self.viewWithTag(400) as? UISlider
@@ -20,15 +21,18 @@ class SliderUITableViewCell : GenericUITableViewCell {
     }
     
     override func displayWidget() {
-        self.textLabel?.text = self.widget.labelText()
+        self.label.text = self.widget.labelText()
+		self.label.textColor = UIColor.whiteColor()
         let widgetValue = widget.item.stateAsFloat()
         self.widgetSlider.value = widgetValue / 100.0
-        self.widgetSlider.addTarget(self, action: "sliderDidEndSlidind:", forControlEvents: (UIControlEvents.TouchUpInside | UIControlEvents.TouchUpOutside))
+        self.widgetSlider.addTarget(self, action: "sliderDidEndSliding:", forControlEvents: (UIControlEvents.TouchUpInside | UIControlEvents.TouchUpOutside))
+		self.detailTextLabel?.font = UIFont(name: "HelveticaNeue", size: 14.0)
+		self.label.font = UIFont(name: "HelveticaNeue", size: 15.0)
     }
-    
+	
     func sliderDidEndSliding(notification: NSNotification) {
         println(String(format:"Slider new value = %f", self.widgetSlider.value))
-        let intValue = self.widgetSlider.value * 100
+        let intValue = Int(self.widgetSlider.value * 100)
         self.widget.sendCommand(String(format:"%d", intValue))
     }
     

@@ -10,7 +10,10 @@ import Foundation
 import UIKit
 
 class GenericUITableViewCell : UITableViewCell {
-    
+	
+	@IBOutlet weak private var labell : UILabel!
+	@IBOutlet weak private var detail : UILabel!
+	
     var widget : OpenHABWidget!
     var disclosureConstraints : [NSLayoutConstraint]!
     
@@ -20,8 +23,7 @@ class GenericUITableViewCell : UITableViewCell {
         //self.detailTextLabel = self.viewWithTag(100) as? UILabel
         self.selectionStyle = UITableViewCellSelectionStyle.None
         self.separatorInset = UIEdgeInsetsZero
-        self.detailTextLabel?.textColor = UIColor.whiteColor()
-        self.textLabel?.textColor = UIColor.whiteColor()
+		self.layoutMargins = UIEdgeInsetsZero
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -32,7 +34,7 @@ class GenericUITableViewCell : UITableViewCell {
         super.layoutSubviews()
         self.imageView?.frame = CGRectMake(13, 5, 32, 32)
     }
-    
+	
     func loadWidget(widgetToLoad: OpenHABWidget) {
         self.widget = widgetToLoad
         if widget.linkedPage != nil {
@@ -45,19 +47,35 @@ class GenericUITableViewCell : UITableViewCell {
     }
     
     func displayWidget() {
-        self.textLabel?.text = self.widget.labelText()
+		if self.labell != nil && self.detail != nil {
+        self.labell.text = self.widget.labelText()
         if self.widget.labelValue() != nil {
-            self.detailTextLabel?.text = self.widget.labelValue()
+            self.detail.text = self.widget.labelValue()
         } else {
-            self.detailTextLabel?.text = nil
+            self.detail.text = nil
         }
-        self.detailTextLabel?.sizeToFit()
+        self.detail.sizeToFit()
         
         if self.disclosureConstraints != nil {
             self.removeConstraints(self.disclosureConstraints)
             disclosureConstraints = nil
         }
-        
+		if self.widget.valuecolor != nil {
+			self.detail.textColor = UIColor.colorWithHexString(self.widget.valuecolor)
+		} else {
+			self.detail.textColor = UIColor.whiteColor()
+		}
+		
+		if self.widget.labelcolor != nil {
+			self.labell.textColor = UIColor.colorWithHexString(self.widget.labelcolor)
+		} else {
+			self.labell.textColor = UIColor.whiteColor()
+		}
+		self.detail.textColor = UIColor.whiteColor()
+		self.labell.textColor = UIColor.whiteColor()
+		self.detail.font = UIFont(name: "HelveticaNeue", size: 14.0)
+		self.labell.font = UIFont(name: "HelveticaNeue", size: 15.0)
+		}
        /* if self.accessoryType == UITableViewCellAccessoryType.None {
             // If accessory is disabled, set detailTextLabel (widget value) constraing 20px to the right for padding to the right side of table view
             if self.detailTextLabel != nil {
@@ -72,19 +90,7 @@ class GenericUITableViewCell : UITableViewCell {
                 }
         }*/
         
-        if self.widget.valuecolor != nil {
-            self.detailTextLabel?.textColor = UIColor.colorWithHexString(self.widget.valuecolor)
-        } else {
-            self.detailTextLabel?.textColor = UIColor.whiteColor()
-        }
-        
-        if self.widget.labelcolor != nil {
-            self.textLabel?.textColor = UIColor.colorWithHexString(self.widget.labelcolor)
-        } else {
-            self.textLabel?.textColor = UIColor.whiteColor()
-        }
-        
-        self.detailTextLabel?.font = UIFont(name: "HelveticaNeue", size: 14.0)
-        self.textLabel?.font = UIFont(name: "HelveticaNeue", size: 15.0)
+		
+		
     }
 }

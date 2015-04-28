@@ -13,6 +13,9 @@ class ColorPickerUITableViewCell : GenericUITableViewCell {
     var upButton : UICircleButton!
     var colorButton : UICircleButton!
     var downButton : UICircleButton!
+	
+	@IBOutlet weak private var label : UILabel!
+	
     var callbackPressColorButton : ((colorPickerUITableViewCell: ColorPickerUITableViewCell) -> Void)?
 
     convenience init(coder aDecoder: NSCoder, callbackPressColorButton: ((colorPickerUITableViewCell: ColorPickerUITableViewCell) -> Void)?) {
@@ -29,8 +32,8 @@ class ColorPickerUITableViewCell : GenericUITableViewCell {
         
         var upCode : [unichar] = [0x25b2]
         var downCode : [unichar] = [0x25bc]
-        self.upButton.setTitle(NSString(characters: &upCode, length: 1), forState: UIControlState.Normal)
-        self.downButton.setTitle(NSString(characters: &downCode, length: 1), forState: UIControlState.Normal)
+        self.upButton.setTitle(NSString(characters: &upCode, length: 1) as String, forState: UIControlState.Normal)
+        self.downButton.setTitle(NSString(characters: &downCode, length: 1) as String, forState: UIControlState.Normal)
         
         self.upButton.addTarget(self, action: "upButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
         self.colorButton.addTarget(self, action: "colorButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
@@ -41,10 +44,12 @@ class ColorPickerUITableViewCell : GenericUITableViewCell {
     }
     
     override func displayWidget() {
-        self.textLabel?.text = self.widget.labelText()
+        self.label.text = self.widget.labelText()
+		self.label.textColor = UIColor.whiteColor()
         colorButton.backgroundColor = self.widget.item.stateAsUIColor()
+		self.label.font = UIFont(name: "HelveticaNeue", size: 15.0)
     }
-    
+	
     
     func upButtonPressed() {
         self.widget.sendCommand("ON")

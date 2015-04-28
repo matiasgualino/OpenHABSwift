@@ -49,7 +49,7 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
     var atmosphereTrackingId : String!
     var selectedWidgetRow : Int!
     
-    override init() {
+	init() {
         super.init(nibName: "OpenHABViewController", bundle: nil)
     }
 
@@ -131,6 +131,7 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
         backgroundImageView.contentMode = UIViewContentMode.ScaleAspectFill
         self.widgetTableView.backgroundView = backgroundImageView
         self.widgetTableView.tableFooterView = UIView()
+		
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
@@ -293,7 +294,7 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
         var widget : OpenHABWidget = self.currentPage.widgets[indexPath.row]
         switch widget.type {
             case "Frame":
-                return widget.label.utf16Count > 0 ? 35 : 0
+                return count(widget.label) > 0 ? 35 : 0
             case "Video":
                 return self.widgetTableView.frame.size.width/1.33333333
             case "Image":
@@ -339,14 +340,14 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
             cellIdentifier = "webWidgetCell"
         }
 
-        var cell : GenericUITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as GenericUITableViewCell
+        var cell : GenericUITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! GenericUITableViewCell
         // No icon is needed for image, video, frame and web widgets
         if widget.icon != nil && cellIdentifier != "chartWidgetCell" || cellIdentifier == "imageWidgetCell" || cellIdentifier == "videoWidgetCell" || cellIdentifier == "frameWidgetCell" || cellIdentifier == "webWidgetCell" {
             var iconUrlString = "\(self.openHABRootUrl)/images/\(widget.icon).png"
             cell.imageView?.sd_setImageWithURL(NSURL(string: iconUrlString), placeholderImage: UIImage(named: "blankicon.png"), options: SDWebImageOptions.allZeros)
         }
         if cellIdentifier == "colorPickerWidgetCell" {
-            (cell as ColorPickerUITableViewCell).callbackPressColorButton = ({
+            (cell as! ColorPickerUITableViewCell).callbackPressColorButton = ({
                 (colorPickerUITableViewCell: ColorPickerUITableViewCell) -> Void in
 
                 var colorPickerViewController = ColorPickerViewController()
@@ -355,10 +356,10 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
             })
         }
         if cellIdentifier == "chartWidgetCell" {
-            (cell as ChartUITableViewCell).baseUrl = self.openHABRootUrl
+            (cell as! ChartUITableViewCell).baseUrl = self.openHABRootUrl
         }
         if cellIdentifier == "chartWidgetCell" || cellIdentifier == "imageWidgetCell" {
-            (cell as ImageUITableViewCell).callbackDidLoadImage = ({
+            (cell as! ImageUITableViewCell).callbackDidLoadImage = ({
                 () -> Void in
                 self.widgetTableView.reloadData()
             })
@@ -482,7 +483,7 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 if data != nil {
                     var error : NSErrorPointer = NSErrorPointer()
-                    var doc : GDataXMLDocument? = GDataXMLDocument(data: data! as NSData, error: error)
+                    var doc : GDataXMLDocument? = GDataXMLDocument(data: data! as! NSData, error: error)
                     if doc == nil {
                         return
                     }
@@ -540,15 +541,15 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.sitemaps.removeAll(keepCapacity: false)
                 if data != nil {
                     var error : NSErrorPointer = NSErrorPointer()
-                    println(NSString(data: data as NSData, encoding: NSUTF8StringEncoding))
-                    var doc : GDataXMLDocument? = GDataXMLDocument(data: data! as NSData, error: error)
+                    println(NSString(data: data as! NSData, encoding: NSUTF8StringEncoding))
+                    var doc : GDataXMLDocument? = GDataXMLDocument(data: data! as! NSData, error: error)
                     if doc == nil {
                         return
                     }
                     println(doc?.rootElement().name())
                     if doc?.rootElement().name() == "sitemaps" {
                         for element in doc!.rootElement().elementsForName("sitemap") {
-                            var sitemap : OpenHABSitemap = OpenHABSitemap.initWithXML(element as GDataXMLElement)
+                            var sitemap : OpenHABSitemap = OpenHABSitemap.initWithXML(element as! GDataXMLElement)
                             self.sitemaps.append(sitemap)
                         }
                     }

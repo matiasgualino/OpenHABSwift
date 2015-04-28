@@ -52,7 +52,7 @@ class OpenHABTracker : NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelega
                 } else {
                     println("OpenHABTracker network is Wifi")
                     // Check if local URL is configured, if yes
-                    if openHABLocalUrl.utf16Count > 0 {
+                    if count(openHABLocalUrl) > 0 {
                         if self.isURLReachable(NSURL(string: openHABLocalUrl)!) {
                             self.trackedLocalUrl()
                         } else {
@@ -68,11 +68,11 @@ class OpenHABTracker : NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelega
             if self.delegate != nil {
                 var errorDetail : NSMutableDictionary = NSMutableDictionary()
                 errorDetail.setValue("Network is not available.", forKey: NSLocalizedDescriptionKey)
-                var trackingError = NSError(domain: "openHAB", code: 100, userInfo: errorDetail)
+                var trackingError = NSError(domain: "openHAB", code: 100, userInfo: errorDetail as [NSObject : AnyObject])
                 self.delegate.openHABTrackingError(trackingError)
                 self.reach = Reachability.reachabilityForInternetConnection()
                 oldReachabilityStatus = reach.currentReachabilityStatus
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: Reachability.ReachabilityChangedNotification, object: nil)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: ReachabilityChangedNotification, object: nil)
                 self.reach.startNotifier()
             }
         }
@@ -88,7 +88,7 @@ class OpenHABTracker : NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelega
     
     func trackedRemoteUrl() {
         var openHABUrl : String = self.normalizeUrl(openHABRemoteUrl)
-        if openHABUrl.utf16Count > 0 {
+        if count(openHABUrl) > 0 {
         if self.delegate != nil {
             self.delegate.openHABTrackingProgress("Connecting to remote URL")
         }
@@ -97,7 +97,7 @@ class OpenHABTracker : NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelega
             if self.delegate != nil {
                 var errorDetail : NSMutableDictionary = NSMutableDictionary()
                 errorDetail.setValue("Remote URL is not configured.", forKey: NSLocalizedDescriptionKey)
-                var trackingError = NSError(domain: "openHAB", code: 101, userInfo: errorDetail)
+                var trackingError = NSError(domain: "openHAB", code: 101, userInfo: errorDetail as [NSObject : AnyObject])
                 self.delegate.openHABTrackingError(trackingError)
             }
         }
@@ -169,12 +169,12 @@ class OpenHABTracker : NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelega
         if urlAux.hasSuffix("/") {
             urlAux = urlAux.substringToIndex(urlAux.length - 1)
         }
-        return urlAux
+        return urlAux as String
     }
     
     func validateUrl(url: String) -> Bool {
         var theURL : String = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
-        var urlTest : NSPredicate = NSPredicate(format: "SELF MATCHES %@", theURL)!
+        var urlTest : NSPredicate = NSPredicate(format: "SELF MATCHES %@", theURL)
         return urlTest.evaluateWithObject(url)
     }
     
@@ -199,7 +199,7 @@ class OpenHABTracker : NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelega
     
     func isURLReachable(url : NSURL) -> Bool {
         var port = String(format:"%d", url.port!)
-        var client : FastSocket = FastSocket(host: url.host, andPort: port)
+        var client : FastSocket = FastSocket(host: url.host!, andPort: port)
         println("Checking if \(url.host):\(port) is reachable")
         if client.connect(1) {
             client.close()

@@ -53,6 +53,8 @@ class WebUITableViewCell : GenericUITableViewCell, UIWebViewDelegate {
         
         println("webview size \(widgetWebView.frame.size.width) \(widgetWebView.frame.size.height)")
         println("scrollview size \(widgetWebView.scrollView.frame.size.width) \(widgetWebView.scrollView.frame.size.height)")
+		self.detailTextLabel?.font = UIFont(name: "HelveticaNeue", size: 14.0)
+		self.textLabel?.font = UIFont(name: "HelveticaNeue", size: 15.0)
     }
 
 }

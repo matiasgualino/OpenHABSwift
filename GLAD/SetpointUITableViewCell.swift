@@ -12,7 +12,8 @@ import UIKit
 class SetpointUITableViewCell : GenericUITableViewCell {
 
     var widgetSegmentedControl : UISegmentedControl!
-    
+    @IBOutlet weak private var label : UILabel!
+	
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.widgetSegmentedControl = self.viewWithTag(300) as? UISegmentedControl
@@ -21,7 +22,8 @@ class SetpointUITableViewCell : GenericUITableViewCell {
     }
 
     override func displayWidget() {
-        self.textLabel?.text = self.widget.labelText()
+        self.label.text = self.widget.labelText()
+		self.label.textColor = UIColor.whiteColor()
         var widgetValue : String?
         if self.widget.item.state == "Uninitialized" {
             widgetValue = "N/A"
@@ -31,9 +33,11 @@ class SetpointUITableViewCell : GenericUITableViewCell {
         
         self.widgetSegmentedControl.setTitle(widgetValue, forSegmentAtIndex: 1)
         self.widgetSegmentedControl.addTarget(self, action: "pickOne:", forControlEvents: UIControlEvents.ValueChanged)
-        
+		
+		self.detailTextLabel?.font = UIFont(name: "HelveticaNeue", size: 14.0)
+		self.label.font = UIFont(name: "HelveticaNeue", size: 15.0)
     }
-    
+	
     func pickOne(sender: AnyObject) {
         var segmentedControl = sender as? UISegmentedControl
         println(String(format:"Setpoint pressed %d", segmentedControl!.selectedSegmentIndex))

@@ -11,16 +11,19 @@ import UIKit
 
 class FrameUITableViewCell : GenericUITableViewCell {
  
+	@IBOutlet weak private var label : UILabel!
+	
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         //        textLabel = self.viewWithTag(100) as? UILabel
         self.selectionStyle = UITableViewCellSelectionStyle.None
-        //        self.separatorInset = UIEdgeInsetsMake(0, 45, 0, 0)
+        self.separatorInset = UIEdgeInsetsMake(0, 30, 0, 0)
     }
     
     override func displayWidget() {
-        self.textLabel?.text = self.widget.label.uppercaseString
-        self.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16.0)
+        self.label.text = self.widget.label.uppercaseString
+        self.label.font = UIFont(name: "HelveticaNeue-Bold", size: 16.0)
+		self.label.textColor = UIColor.whiteColor()
         self.contentView.sizeToFit()
     }
     

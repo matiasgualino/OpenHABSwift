@@ -24,9 +24,9 @@ class OpenHABItem : NSObject {
         } else {
             var values = (self.state as NSString).componentsSeparatedByString(",")
             if values.count == 3 {
-                var hue : CGFloat = CGFloat((values[0] as NSString).floatValue / 360.0)
-                var saturation : CGFloat = CGFloat((values[1] as NSString).floatValue / 100.0)
-                var brightness : CGFloat = CGFloat((values[2] as NSString).floatValue / 100.0)
+                var hue : CGFloat = CGFloat((values[0] as! NSString).floatValue / 360.0)
+                var saturation : CGFloat = CGFloat((values[1] as! NSString).floatValue / 100.0)
+                var brightness : CGFloat = CGFloat((values[2] as! NSString).floatValue / 100.0)
                 return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1.0)
             } else {
                 return UIColor(hue: 0.0, saturation: 0.0, brightness: 0.0, alpha: 1.0)

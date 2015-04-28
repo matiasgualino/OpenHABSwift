@@ -48,10 +48,10 @@ class OpenHABSitemap {
     class func initWithXML(xmlElement: GDataXMLElement) -> OpenHABSitemap {
         var sitemap = OpenHABSitemap()
         for child in xmlElement.children() {
-            let childElement = child as GDataXMLElement
+            let childElement = child as! GDataXMLElement
             if childElement.name() == "homepage" {
                 for childChildEle in childElement.children() {
-                    let childChildElement = childChildEle as GDataXMLElement
+                    let childChildElement = childChildEle as! GDataXMLElement
                     if childChildElement.name() == "link" {
                         sitemap.homepageLink = childChildElement.stringValue()
                     }

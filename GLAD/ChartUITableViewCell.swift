@@ -13,6 +13,8 @@ class ChartUITableViewCell : ImageUITableViewCell {
     var baseUrl : String!
     
     override func displayWidget() {
+		self.detailTextLabel?.font = UIFont(name: "HelveticaNeue", size: 14.0)
+		self.textLabel?.font = UIFont(name: "HelveticaNeue", size: 15.0)
         self.widgetImage = self.viewWithTag(801) as? UIImageView
         var chartUrl : String?
         var random = arc4random() % 1000
@@ -21,7 +23,7 @@ class ChartUITableViewCell : ImageUITableViewCell {
         } else {
             chartUrl = "\(self.baseUrl!)/chart?items=\(self.widget.item.name)&period=\(self.widget.period)&random=\(random)"
         }
-        if self.widget.service != nil && self.widget.service.utf16Count > 0 {
+        if self.widget.service != nil && count(self.widget.service) > 0 {
             chartUrl = "\(chartUrl)&service=\(self.widget.service)"
         }
         println("Chart url \(chartUrl)")

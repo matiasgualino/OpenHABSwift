@@ -43,14 +43,14 @@ DEPENDENCIES:
   - TSMessages (~> 0.9.10)
 
 SPEC CHECKSUMS:
-  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
-  CrittercismSDK: 1f1a91c7a51ca8044e675765bde5d2aa97295b1d
-  FastSocket: a519c83e8126c757f71908292ac4f076946df5fc
-  GDataXML-HTML: 3aa8f4200dd461d0a95d812397cebd6a2c98953f
-  GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
-  HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
-  NKOColorPickerView: b4d32e1eedfcaeaec890f8301081ee030d49cffd
+  AFNetworking: 41d45d2c14219af0fa5addf3cfd433a002c13c9f
+  CrittercismSDK: f1364ebf70823dea25a5f5edbed31f445b36120a
+  FastSocket: 0fa2716071517078d67ead1378d34af443bd54c4
+  GDataXML-HTML: dac3692417e9fc612f8e12d8baae3706fccedcc8
+  GoogleAnalytics-iOS-SDK: 3b0994bef22ed2e176a9e2a4d1660c7c2542eb47
+  HexColors: abfd172e329dab59888614ccba6f216cec59289d
+  NKOColorPickerView: 3001ad15be1277dac3b80b300f530828e93b23ae
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
-  TSMessages: b2b5dc71f65146387e51f2600bb0eb8f3a6c4ab8
+  TSMessages: 2a52642128d7ab15b46930c810b9c9403a2b58f3
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.36.4

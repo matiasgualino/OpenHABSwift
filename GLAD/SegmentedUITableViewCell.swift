@@ -12,7 +12,9 @@ import UIKit
 class SegmentedUITableViewCell : GenericUITableViewCell {
 
     var widgetSegmentedControl : UISegmentedControl!
-    
+	
+	@IBOutlet weak private var label : UILabel!
+	
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.widgetSegmentedControl = self.viewWithTag(500) as? UISegmentedControl
@@ -21,19 +23,21 @@ class SegmentedUITableViewCell : GenericUITableViewCell {
     }
     
     override func displayWidget() {
-        self.textLabel?.text = self.widget.labelText()
-        widgetSegmentedControl.apportionsSegmentWidthsByContent = true
-        self.widgetSegmentedControl.removeAllSegments()
+        self.label.text = self.widget.labelText()
+		self.label.textColor = UIColor.whiteColor()
         self.widgetSegmentedControl.apportionsSegmentWidthsByContent = true
-                self.widgetSegmentedControl.addTarget(self, action: "pickOne:", forControlEvents: UIControlEvents.ValueChanged)
+        self.widgetSegmentedControl.removeAllSegments()
         var i = 0
         for mapping in self.widget.mappings {
             self.widgetSegmentedControl.insertSegmentWithTitle(mapping.label, atIndex: i, animated: false)
             i++
         }
         self.widgetSegmentedControl.selectedSegmentIndex = self.widget.mappingIndexByCommand(self.widget.item.state)
+        self.widgetSegmentedControl.addTarget(self, action: "pickOne:", forControlEvents: UIControlEvents.ValueChanged)
+		self.detailTextLabel?.font = UIFont(name: "HelveticaNeue", size: 14.0)
+		self.label.font = UIFont(name: "HelveticaNeue", size: 15.0)
     }
-    
+	
     func pickOne(sender: AnyObject) {
         var segmentedControl : UISegmentedControl? = sender as? UISegmentedControl
         println(String(format:"Segment pressed %d", segmentedControl!.selectedSegmentIndex))

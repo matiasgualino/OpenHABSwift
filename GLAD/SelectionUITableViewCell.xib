@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="700" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDK-ti-AtX">
-                        <rect key="frame" x="62" y="11" width="175" height="21"/>
+                        <rect key="frame" x="52" y="11" width="175" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="175" id="QJe-Qn-1ue"/>
                         </constraints>
@@ -24,7 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFW-2S-UGC">
-                        <rect key="frame" x="245" y="11" width="322" height="21"/>
+                        <rect key="frame" x="235" y="11" width="332" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -36,7 +36,7 @@
                     <constraint firstItem="tDK-ti-AtX" firstAttribute="firstBaseline" secondItem="TFW-2S-UGC" secondAttribute="baseline" id="Unr-bY-KjB"/>
                     <constraint firstItem="tDK-ti-AtX" firstAttribute="centerY" secondItem="Fzd-gL-G1f" secondAttribute="centerY" id="VXf-AU-hac"/>
                     <constraint firstItem="tDK-ti-AtX" firstAttribute="baseline" secondItem="TFW-2S-UGC" secondAttribute="firstBaseline" id="ecu-Xw-KX1"/>
-                    <constraint firstItem="tDK-ti-AtX" firstAttribute="leading" secondItem="Fzd-gL-G1f" secondAttribute="leading" constant="62" id="hFT-jx-aqx"/>
+                    <constraint firstItem="tDK-ti-AtX" firstAttribute="leading" secondItem="Fzd-gL-G1f" secondAttribute="leading" constant="52" id="hFT-jx-aqx"/>
                     <constraint firstAttribute="trailing" secondItem="TFW-2S-UGC" secondAttribute="trailing" id="oVj-O7-1qf"/>
                 </constraints>
             </tableViewCellContentView>
@@ -44,6 +44,10 @@
             <accessibility key="accessibilityConfiguration">
                 <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
             </accessibility>
+            <connections>
+                <outlet property="det" destination="TFW-2S-UGC" id="oU7-kz-a2A"/>
+                <outlet property="label" destination="tDK-ti-AtX" id="uEc-kZ-yb1"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

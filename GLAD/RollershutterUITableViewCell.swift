@@ -23,9 +23,9 @@ class RollershutterUITableViewCell : GenericUITableViewCell {
         var upCode : [unichar] = [0x25b2]
         var stopCode : [unichar] = [0x25a0]
         var downCode : [unichar] = [0x25bc]
-        self.upButton.setTitle(NSString(characters: &upCode, length: 1), forState: UIControlState.Normal)
-        self.stopButton.setTitle(NSString(characters: &stopCode, length: 1), forState: UIControlState.Normal)
-        self.downButton.setTitle(NSString(characters: &downCode, length: 1), forState: UIControlState.Normal)
+        self.upButton.setTitle(NSString(characters: &upCode, length: 1) as String, forState: UIControlState.Normal)
+        self.stopButton.setTitle(NSString(characters: &stopCode, length: 1) as String, forState: UIControlState.Normal)
+        self.downButton.setTitle(NSString(characters: &downCode, length: 1) as String, forState: UIControlState.Normal)
         
         self.upButton.addTarget(self, action: "upButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
         self.stopButton.addTarget(self, action: "stopButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)

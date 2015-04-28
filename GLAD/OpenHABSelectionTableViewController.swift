@@ -15,7 +15,7 @@ class OpenHABSelectionTableViewController: UIViewController, UITableViewDelegate
     var selectionItemCallback : ((selectedMappingIndex: Int) -> Void)?
     var selectionItem : OpenHABItem!
     
-    override init() {
+	init() {
         super.init(nibName: "OpenHABSelectionTableViewController", bundle: nil)
     }
     
@@ -39,9 +39,9 @@ class OpenHABSelectionTableViewController: UIViewController, UITableViewDelegate
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var CellIdentifier : NSString = "SelectionCell"
-        var cell : UITableViewCell? = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as? UITableViewCell
+        var cell : UITableViewCell? = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier as String, forIndexPath: indexPath) as? UITableViewCell
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier as String)
         }
         var mapping : OpenHABWidgetMapping = mappings[indexPath.row]
         cell!.textLabel!.text = mapping.label

@@ -21,7 +21,7 @@ extension UIColor {
             var blue : CGFloat = 0.0
             var green : CGFloat = 0.0
             
-            switch colorString.utf16Count {
+            switch count(colorString) {
             case 3: // #RGB
                 alpha = 1.0
                 red = colorComponentFrom(colorString, start: 0, length: 1)

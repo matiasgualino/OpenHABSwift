@@ -30,8 +30,10 @@ class ImageUITableViewCell : GenericUITableViewCell {
             var refreshInterval : NSTimeInterval = (self.widget.refresh as NSString).doubleValue / 1000.0
             refreshTimer = NSTimer.scheduledTimerWithTimeInterval(refreshInterval, target: self, selector: "refreshImage:", userInfo: nil, repeats: true)
         }
+		self.detailTextLabel?.font = UIFont(name: "HelveticaNeue", size: 14.0)
+		self.textLabel?.font = UIFont(name: "HelveticaNeue", size: 15.0)
     }
-    
+	
     func loadImage() {
         var random = arc4random() % 1000
         

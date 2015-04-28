@@ -19,7 +19,7 @@ class OpenHABSelectSitemapViewController: UIViewController, UITableViewDelegate,
     var ignoreSSLCertificate : Bool!
     var selectedSitemap : Int!
    
-    override init() {
+    init() {
         super.init(nibName: "OpenHABSelectSitemapViewController", bundle: nil)
     }
     
@@ -94,7 +94,7 @@ class OpenHABSelectSitemapViewController: UIViewController, UITableViewDelegate,
                 println("Sitemap response")
                 println("openHAB 1")
                 var error : NSErrorPointer = NSErrorPointer()
-                var doc : GDataXMLDocument? = GDataXMLDocument(data: data! as NSData, error: error)
+                var doc : GDataXMLDocument? = GDataXMLDocument(data: data! as! NSData, error: error)
                 if doc == nil {
                     return
                 }

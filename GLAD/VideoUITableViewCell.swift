@@ -31,6 +31,8 @@ class VideoUITableViewCell : GenericUITableViewCell {
     
     override func displayWidget() {
         println("Video url = \(widget.url)")
+		self.detailTextLabel?.font = UIFont(name: "HelveticaNeue", size: 14.0)
+		self.textLabel?.font = UIFont(name: "HelveticaNeue", size: 15.0)
         //    videoPlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:widget.url]];
         //    videoPlayer.view.frame = self.contentView.bounds;
         //    [self.contentView addSubview:videoPlayer.view];

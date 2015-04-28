@@ -78,17 +78,17 @@ class OpenHABWidget : NSObject {
         for key in dictionary.allKeys {
             let keyStr = (key as? String)
             if keyStr == "item" {
-                widget.item = OpenHABItem.initWithDictionary(dictionary.valueForKey(keyStr!) as NSDictionary)
+                widget.item = OpenHABItem.initWithDictionary(dictionary.valueForKey(keyStr!) as! NSDictionary)
             } else if keyStr == "mappings" {
                 var widgetMappingsArray = dictionary.valueForKey(keyStr!) as? NSArray
                 if widgetMappingsArray != nil {
                     for dic in widgetMappingsArray! {
-                        var mapping = OpenHABWidgetMapping.initWithDictionary(dic as NSDictionary)
+                        var mapping = OpenHABWidgetMapping.initWithDictionary(dic as! NSDictionary)
                         widget.mappings.append(mapping)
                     }
                 }
             } else if keyStr == "linkedPage" {
-                widget.linkedPage = OpenHABLinkedPage.initWithDictionary(dictionary.valueForKey(keyStr!) as NSDictionary)
+                widget.linkedPage = OpenHABLinkedPage.initWithDictionary(dictionary.valueForKey(keyStr!) as! NSDictionary)
             } else {
                 // TODO : LOAD MORE VARIABLES
             }
@@ -102,7 +102,7 @@ class OpenHABWidget : NSObject {
         while valueString.hasSuffix(" ") {
             valueString = valueString.substringToIndex(valueString.length - 1)
         }
-        return valueString
+        return valueString as String
     }
     
     func labelValue() -> String? {
@@ -112,7 +112,7 @@ class OpenHABWidget : NSObject {
             while valueString.hasSuffix("]") || valueString.hasSuffix(" ") {
                 valueString = valueString.substringToIndex(valueString.length - 1)
             }
-            return valueString
+            return valueString as String
         } else {
             return nil
         }

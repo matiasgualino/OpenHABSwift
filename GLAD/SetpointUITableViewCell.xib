@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -15,13 +15,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Md0-T8-bmh">
-                        <rect key="frame" x="8" y="8" width="441" height="30"/>
+                        <rect key="frame" x="48" y="8" width="413" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <segmentedControl opaque="NO" tag="300" contentMode="scaleToFill" horizontalCompressionResistancePriority="800" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GoH-Tr-W7Z">
-                        <rect key="frame" x="457" y="9" width="123" height="29"/>
+                        <rect key="frame" x="469" y="9" width="123" height="29"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="123" id="ZGs-aF-jor"/>
                         </constraints>
@@ -38,14 +38,17 @@
                     <constraint firstItem="GoH-Tr-W7Z" firstAttribute="leading" secondItem="Md0-T8-bmh" secondAttribute="trailing" constant="8" id="9fr-mz-taz"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Md0-T8-bmh" secondAttribute="bottom" constant="-3" id="A3t-mm-M8f"/>
                     <constraint firstItem="GoH-Tr-W7Z" firstAttribute="top" secondItem="pdk-RJ-LWv" secondAttribute="topMargin" constant="1" id="TGl-M6-GHz"/>
-                    <constraint firstItem="Md0-T8-bmh" firstAttribute="leading" secondItem="pdk-RJ-LWv" secondAttribute="leadingMargin" id="fF7-Zl-B3q"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="GoH-Tr-W7Z" secondAttribute="trailing" constant="12" id="m9Z-3I-4sJ"/>
+                    <constraint firstItem="Md0-T8-bmh" firstAttribute="leading" secondItem="pdk-RJ-LWv" secondAttribute="leadingMargin" constant="40" id="fF7-Zl-B3q"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="GoH-Tr-W7Z" secondAttribute="trailing" id="m9Z-3I-4sJ"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <accessibility key="accessibilityConfiguration">
                 <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
             </accessibility>
+            <connections>
+                <outlet property="label" destination="Md0-T8-bmh" id="hSS-nf-c49"/>
+            </connections>
             <point key="canvasLocation" x="316" y="348"/>
         </tableViewCell>
     </objects>

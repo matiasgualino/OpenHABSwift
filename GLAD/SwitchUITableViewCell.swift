@@ -11,7 +11,8 @@ import UIKit
 
 class SwitchUITableViewCell : GenericUITableViewCell {
     var widgetSwitch : UISwitch!
-    
+    @IBOutlet weak private var label : UILabel!
+	
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.widgetSwitch = self.viewWithTag(200) as? UISwitch
@@ -20,7 +21,8 @@ class SwitchUITableViewCell : GenericUITableViewCell {
     }
     
     override func displayWidget() {
-        self.textLabel?.text = self.widget.labelText()
+        self.label.text = self.widget.labelText()
+		self.label.textColor = UIColor.whiteColor()
         if self.widget.labelValue() != nil {
             self.detailTextLabel?.text = self.widget.labelValue()
         } else {
@@ -34,8 +36,11 @@ class SwitchUITableViewCell : GenericUITableViewCell {
         }
         
         self.widgetSwitch.addTarget(self, action: "switchChange:", forControlEvents: UIControlEvents.ValueChanged)
+		
+		self.detailTextLabel?.font = UIFont(name: "HelveticaNeue", size: 14.0)
+		self.label.font = UIFont(name: "HelveticaNeue", size: 15.0)
     }
-    
+	
     func switchChange(sender: AnyObject) {
         if self.widgetSwitch.on {
             self.widget.sendCommand("ON")
