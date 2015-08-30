@@ -14,6 +14,8 @@
 		<string>https://github.com/Alamofire/Alamofire.git</string>
 		<key>774BF99060AF12397B0FD71C25CF7104A1E8B4F3</key>
 		<string>https://github.com/matiasgualino/OpenHABSwift.git</string>
+		<key>E28E36D423EC87798E52E2BF482E9F7A1E6479D6</key>
+		<string>https://github.com/rs/SDWebImage.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>GLAD.xcworkspace</string>
@@ -23,6 +25,8 @@
 		<string>../Alamofire</string>
 		<key>774BF99060AF12397B0FD71C25CF7104A1E8B4F3</key>
 		<string>..</string>
+		<key>E28E36D423EC87798E52E2BF482E9F7A1E6479D6</key>
+		<string>../../OpenHABSwift/SDWebImage</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/matiasgualino/OpenHABSwift.git</string>
@@ -47,6 +51,14 @@
 			<string>774BF99060AF12397B0FD71C25CF7104A1E8B4F3</string>
 			<key>IDESourceControlWCCName</key>
 			<string>GLAD</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E28E36D423EC87798E52E2BF482E9F7A1E6479D6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SDWebImage</string>
 		</dict>
 	</array>
 </dict>

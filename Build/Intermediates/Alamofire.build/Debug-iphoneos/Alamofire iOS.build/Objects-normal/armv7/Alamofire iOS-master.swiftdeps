@@ -1,0 +1,13 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "cd6fff471c522e5cf24741e2ff9c4946"
+inputs: 
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Alamofire-master 2/Source/Upload.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Alamofire-master 2/Source/ParameterEncoding.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Alamofire-master 2/Source/Request.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Alamofire-master 2/Source/ResponseSerialization.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Alamofire-master 2/Source/Manager.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Alamofire-master 2/Source/Alamofire.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Alamofire-master 2/Source/MultipartFormData.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Alamofire-master 2/Source/ServerTrustPolicy.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Alamofire-master 2/Source/Download.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Alamofire-master 2/Source/Validation.swift"

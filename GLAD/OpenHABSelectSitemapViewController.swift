@@ -13,9 +13,9 @@ class OpenHABSelectSitemapViewController: UIViewController, UITableViewDelegate,
 
     @IBOutlet weak private var tableView : UITableView!
     var sitemaps : [OpenHABSitemap]!
-    var openHABRootUrl : String! = "https://diegogr.no-ip.biz:8080"
-    var openHABUsername : String! = "diego"
-    var openHABPassword : String! = "openhab"
+    var openHABRootUrl : String!
+    var openHABUsername : String!
+    var openHABPassword : String!
     var ignoreSSLCertificate : Bool!
     var selectedSitemap : Int!
    
@@ -38,6 +38,7 @@ class OpenHABSelectSitemapViewController: UIViewController, UITableViewDelegate,
         var prefs : NSUserDefaults = NSUserDefaults.standardUserDefaults()
         self.openHABUsername = prefs.valueForKey("username") as? String
         self.openHABPassword = prefs.valueForKey("password") as? String
+		self.openHABRootUrl = prefs.valueForKey("remoteUrl") as? String
         self.ignoreSSLCertificate = prefs.boolForKey("ignoreSSL")
     }
     

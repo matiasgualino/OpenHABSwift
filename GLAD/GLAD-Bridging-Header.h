@@ -9,6 +9,7 @@
 
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/SDWebImageDownloader.h>
+#import <AFNetworking/AFNetworking.h>
 #import <TSMessages/TSMessage.h>
 #import <sys/socket.h>
 #import <netinet/in.h>

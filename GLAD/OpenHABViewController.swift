@@ -105,6 +105,10 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func sendCommand(item: OpenHABItem, command: String) {
         var commandUrl : NSURL = NSURL(string: item.link)!
+		var apiManager : AFHTTPSessionManager = AFHTTPSessionManager(baseURL: commandUrl)
+		var policy : AFSecurityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.Certificate)
+		policy.allowInvalidCertificates = true
+		apiManager.securityPolicy = policy
         var commandRequest : NSMutableURLRequest = NSMutableURLRequest(URL: commandUrl)
         commandRequest.HTTPMethod = "POST"
         commandRequest.HTTPBody = command.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
@@ -131,6 +135,8 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
         backgroundImageView.contentMode = UIViewContentMode.ScaleAspectFill
         self.widgetTableView.backgroundView = backgroundImageView
         self.widgetTableView.tableFooterView = UIView()
+		
+		self.navigationItem.backBarButtonItem?.enabled = false
 		
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: nil)
@@ -197,6 +203,11 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
                 println("Registration URL = \(registrationUrl!.absoluteString)")
                 var registrationRequest : NSMutableURLRequest? = NSMutableURLRequest(URL: registrationUrl!)
                 registrationRequest?.setAuthCredentials(self.openHABUsername, password: self.openHABPassword)
+				
+				var apiManager : AFHTTPSessionManager = AFHTTPSessionManager(baseURL: registrationUrl)
+				var policy : AFSecurityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.Certificate)
+				policy.allowInvalidCertificates = true
+				apiManager.securityPolicy = policy
 
                 Alamofire.request(registrationRequest!).response({
                     (_, response, data, error) in
@@ -289,6 +300,10 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
             return 0
         }
     }
+	
+	func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return CGFloat.min
+	}
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var widget : OpenHABWidget = self.currentPage.widgets[indexPath.row]
@@ -377,11 +392,11 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         self.widgetTableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        let posX = cell.imageView != nil ? cell.imageView!.frame.width : 50
-        var separatorView : UIView = UIView(frame: CGRectMake(50, cell.frame.height - 1, cell.frame.size.width, 1))
+        let posX = cell.imageView != nil ? cell.imageView!.frame.width : 55
+        var separatorView : UIView = UIView(frame: CGRectMake(55, cell.frame.height - 1, cell.frame.size.width, 1))
         
         if cellIdentifier == "frameWidgetCell" {
-            separatorView = UIView(frame: CGRectMake(50, 0, cell.frame.size.width, 2))
+            separatorView = UIView(frame: CGRectMake(55, 0, cell.frame.size.width, 2))
         }
         
         separatorView.backgroundColor = UIColor.whiteColor()
@@ -427,6 +442,12 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         var pageToLoadUrl : NSURL = NSURL(string:self.pageUrl)!
+		
+		var apiManager : AFHTTPSessionManager = AFHTTPSessionManager(baseURL: pageToLoadUrl)
+		var policy : AFSecurityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.Certificate)
+		policy.allowInvalidCertificates = true
+		apiManager.securityPolicy = policy
+		
         var pageRequest : NSMutableURLRequest = NSMutableURLRequest(URL: pageToLoadUrl)
         pageRequest.setAuthCredentials(self.openHABUsername, password: self.openHABPassword)
         pageRequest.setValue("application/xml", forHTTPHeaderField: "Accept")
@@ -483,7 +504,7 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 if data != nil {
                     var error : NSErrorPointer = NSErrorPointer()
-                    var doc : GDataXMLDocument? = GDataXMLDocument(data: data! as! NSData, error: error)
+                    var doc : GDataXMLDocument? = GDataXMLDocument(data: data!, error: error)
                     if doc == nil {
                         return
                     }
@@ -517,9 +538,37 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func selectSitemap() {
+		let manager = Alamofire.Manager.sharedInstance
+		
+		manager.delegate.sessionDidReceiveChallenge = { session, challenge in
+			var disposition: NSURLSessionAuthChallengeDisposition = .PerformDefaultHandling
+			var credential: NSURLCredential?
+			
+			if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+				disposition = NSURLSessionAuthChallengeDisposition.UseCredential
+				credential = NSURLCredential(forTrust: challenge.protectionSpace.serverTrust)
+			} else {
+				if challenge.previousFailureCount > 0 {
+					disposition = .CancelAuthenticationChallenge
+				} else {
+					credential = manager.session.configuration.URLCredentialStorage?.defaultCredentialForProtectionSpace(challenge.protectionSpace)
+					
+					if credential != nil {
+						disposition = .UseCredential
+					}
+				}
+			}
+			
+			return (disposition, credential)
+		}
         var sitemapsUrlString = "\(self.openHABRootUrl)/rest/sitemaps"
         var sitemapsUrl = NSURL(string: sitemapsUrlString)
+		var apiManager : AFHTTPSessionManager = AFHTTPSessionManager(baseURL: sitemapsUrl)
+		var policy : AFSecurityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.Certificate)
+		policy.allowInvalidCertificates = true
+		apiManager.securityPolicy = policy
         var sitemapsRequest = NSMutableURLRequest(URL: sitemapsUrl!)
+
         sitemapsRequest.setAuthCredentials(self.openHABUsername, password: self.openHABPassword)
         sitemapsRequest.timeoutInterval = 25.0
         Alamofire.request(sitemapsRequest).response({
@@ -541,8 +590,8 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.sitemaps.removeAll(keepCapacity: false)
                 if data != nil {
                     var error : NSErrorPointer = NSErrorPointer()
-                    println(NSString(data: data as! NSData, encoding: NSUTF8StringEncoding))
-                    var doc : GDataXMLDocument? = GDataXMLDocument(data: data! as! NSData, error: error)
+                    println(NSString(data: data!, encoding: NSUTF8StringEncoding))
+                    var doc : GDataXMLDocument? = GDataXMLDocument(data: data!, error: error)
                     if doc == nil {
                         return
                     }

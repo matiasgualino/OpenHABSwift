@@ -25,8 +25,18 @@ class OpenHABSelectionTableViewController: UIViewController, UITableViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+		self.tableView.delegate = self
+		self.tableView.dataSource = self
+		var backgroundImageView = UIImageView(frame: self.tableView.frame)
+		backgroundImageView.image = UIImage(named:"background")
+		backgroundImageView.contentMode = UIViewContentMode.ScaleAspectFill
+		self.tableView.backgroundView = backgroundImageView
+		self.tableView.tableFooterView = UIView()
+		
+		var genericWidgetCellNib = UINib(nibName: "GenericUITableViewCell", bundle: nil)
+		self.tableView.registerNib(genericWidgetCellNib, forCellReuseIdentifier: "genericWidgetCell")
+		
+		self.tableView.reloadData()
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -36,16 +46,25 @@ class OpenHABSelectionTableViewController: UIViewController, UITableViewDelegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return mappings.count
     }
-    
+	
+	func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return CGFloat.min
+	}
+	
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var CellIdentifier : NSString = "SelectionCell"
-        var cell : UITableViewCell? = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier as String, forIndexPath: indexPath) as? UITableViewCell
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier as String)
-        }
-        var mapping : OpenHABWidgetMapping = mappings[indexPath.row]
-        cell!.textLabel!.text = mapping.label
-        return cell!
+		
+        var cell : GenericUITableViewCell = tableView.dequeueReusableCellWithIdentifier("genericWidgetCell") as! GenericUITableViewCell
+		
+		self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+		var separatorView : UIView = UIView(frame: CGRectMake(50, cell.frame.height - 1, cell.frame.size.width, 1))
+		
+		separatorView.backgroundColor = UIColor.whiteColor()
+		cell.contentView.addSubview(separatorView)
+		
+		var mapping : OpenHABWidgetMapping = mappings[indexPath.row]
+		cell.loadWidgetMapping(mapping)
+		cell.displayWidgetMapping()
+		return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

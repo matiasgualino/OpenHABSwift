@@ -1,0 +1,6 @@
+framework module NKOColorPickerView {
+  umbrella header "Pods-NKOColorPickerView-umbrella.h"
+
+  export *
+  module * { export * }
+}

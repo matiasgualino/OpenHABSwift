@@ -1,0 +1,13 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "3ab179423e57459a767a453720b07b6d"
+inputs: 
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Pods/Alamofire/Source/Alamofire.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Pods/Alamofire/Source/Download.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Pods/Alamofire/Source/Manager.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Pods/Alamofire/Source/MultipartFormData.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Pods/Alamofire/Source/ParameterEncoding.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Pods/Alamofire/Source/Request.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Pods/Alamofire/Source/ResponseSerialization.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Pods/Alamofire/Source/ServerTrustPolicy.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Pods/Alamofire/Source/Upload.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Pods/Alamofire/Source/Validation.swift"

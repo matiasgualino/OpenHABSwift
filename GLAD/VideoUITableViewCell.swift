@@ -19,7 +19,7 @@ class VideoUITableViewCell : GenericUITableViewCell {
         set {
             println("setFrame")
             super.frame = newValue
-            //    [videoPlayer.view setFrame:frame];
+			self.videoPlayer.view.frame = newValue
         }
     }
     

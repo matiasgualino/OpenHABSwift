@@ -21,23 +21,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         println("didFinishLaunchingWithOptions started")
         var appDefaults : NSDictionary = NSDictionary(object: NSNumber(bool: true), forKey: "CacheDataAgressively")
         NSUserDefaults.standardUserDefaults().registerDefaults(appDefaults as [NSObject : AnyObject])
-        self.loadSettingsDefaults()
+		//        self.loadSettingsDefaults()
         
         UIApplication.sharedApplication().registerForRemoteNotificationTypes((UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound | UIRemoteNotificationType.Alert))
         println("uniq id " + UIDevice.currentDevice().identifierForVendor.UUIDString)
         println("device name " + UIDevice.currentDevice().name)
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, error: nil)
-        var doSetProperty = 1;
+        var doSetProperty = 1
         println("didFinishLaunchingWithOptions ended")
-
-        NSUserDefaults.standardUserDefaults().setValue("diego", forKey: "username")
-        NSUserDefaults.standardUserDefaults().setValue("openhab", forKey: "password")
-        NSUserDefaults.standardUserDefaults().setValue("http://diegogr.no-ip.biz:8080", forKey: "localUrl")
-        NSUserDefaults.standardUserDefaults().setValue("http://diegogr.no-ip.biz:8080", forKey: "remoteUrl")
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
-        var navController : UINavigationController = UINavigationController(rootViewController: OpenHABViewController())
+		var controller : UIViewController = LoginViewController()
+		if NSUserDefaults.standardUserDefaults().valueForKey("remoteUrl") != nil {
+			controller = OpenHABViewController()
+		}
+		
+        var navController : UINavigationController = UINavigationController(rootViewController: controller)
         navController.navigationBar.barTintColor = UIColor.colorWithHexString("#ED605B")
         navController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navController.navigationBar.tintColor = UIColor.whiteColor()
@@ -47,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-    
+    /*
     func loadSettingsDefaults() {
         var prefs : NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if prefs.objectForKey("localUrl") == nil {
@@ -66,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             prefs.setValue("", forKey: "idleOff")
         }
     }
-    
+    */
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

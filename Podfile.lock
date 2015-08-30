@@ -22,7 +22,6 @@ PODS:
     - AFNetworking/NSURLSession
   - CrittercismSDK (5.0.7)
   - FastSocket (1.3)
-  - GDataXML-HTML (1.2.0)
   - GoogleAnalytics-iOS-SDK (3.0.9)
   - HexColors (2.2.1)
   - NKOColorPickerView (0.2)
@@ -30,13 +29,12 @@ PODS:
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
   - TSMessages (0.9.12):
-    - HexColors
+    - HexColors (~> 2.2.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.4.1)
   - CrittercismSDK (~> 5.0.4)
   - FastSocket (~> 1.2)
-  - GDataXML-HTML (~> 1.2.0)
   - GoogleAnalytics-iOS-SDK (~> 3.0.9)
   - NKOColorPickerView (~> 0.2)
   - SDWebImage (~> 3.7.1)
@@ -46,11 +44,10 @@ SPEC CHECKSUMS:
   AFNetworking: 41d45d2c14219af0fa5addf3cfd433a002c13c9f
   CrittercismSDK: f1364ebf70823dea25a5f5edbed31f445b36120a
   FastSocket: 0fa2716071517078d67ead1378d34af443bd54c4
-  GDataXML-HTML: dac3692417e9fc612f8e12d8baae3706fccedcc8
   GoogleAnalytics-iOS-SDK: 3b0994bef22ed2e176a9e2a4d1660c7c2542eb47
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   NKOColorPickerView: 3001ad15be1277dac3b80b300f530828e93b23ae
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
-  TSMessages: 2a52642128d7ab15b46930c810b9c9403a2b58f3
+  TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
 
 COCOAPODS: 0.36.4
