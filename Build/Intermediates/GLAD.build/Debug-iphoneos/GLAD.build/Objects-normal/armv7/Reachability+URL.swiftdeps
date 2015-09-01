@@ -3,23 +3,23 @@ provides:
 nominals:
 - "C4GLAD12Reachability"
 class-members:
-- "reachabilityWithUrl"
-- "reachabilityWithUrlString"
 - "currentlyReachable"
+- "reachabilityWithUrlString"
+- "reachabilityWithUrl"
 top-level:
 - !private "||"
-- "NSURL"
-- !private "BooleanLiteralType"
 - "Reachability"
+- "NSURL"
 - "Bool"
-- "String"
+- !private "BooleanLiteralType"
 - !private "=="
+- "String"
 member-access:
-- "C4GLAD12Reachability"
-- !private "Sb"
 - "CSo8NSObject"
+- !private "Sb"
 - !private "OC4GLAD12Reachability13NetworkStatus"
 - !private "CSo5NSURL"
+- "C4GLAD12Reachability"
 dynamic-lookup:
 cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/Swift.swiftmodule"

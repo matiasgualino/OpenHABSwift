@@ -5,9 +5,9 @@ nominals:
 - "C4GLAD17OpenHABDataObject"
 class-members:
 top-level:
-- "Int"
 - "String"
 - "OpenHABViewController"
+- "Int"
 - "OpenHABSitemap"
 member-access:
 - "PSs9AnyObject"

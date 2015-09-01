@@ -35,6 +35,8 @@ class LoginViewController: UIViewController {
 		titleImage.contentMode = UIViewContentMode.ScaleAspectFit
 		self.navigationItem.titleView = titleImage
 		
+		self.navigationItem.hidesBackButton = true
+		
 		self.btnLogin.layer.cornerRadius = 4
 		self.btnLogin.setTitle("Ingresar", forState: UIControlState.Normal)
 		
@@ -111,6 +113,7 @@ class LoginViewController: UIViewController {
 						NSUserDefaults.standardUserDefaults().setValue("https://" + (JSON!["address"] as? String)! + ":8443", forKey: "localUrl")
 						NSUserDefaults.standardUserDefaults().setValue("https://" + (JSON!["address"] as? String)! + ":8443", forKey: "remoteUrl")
 						NSUserDefaults.standardUserDefaults().synchronize()
+						self.navigationController?.popToRootViewControllerAnimated(true)
 						self.navigationController?.pushViewController(OpenHABViewController(), animated: true)
 					}
 			}

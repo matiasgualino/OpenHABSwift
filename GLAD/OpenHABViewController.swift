@@ -136,12 +136,27 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.widgetTableView.backgroundView = backgroundImageView
         self.widgetTableView.tableFooterView = UIView()
 		
-		self.navigationItem.backBarButtonItem?.enabled = false
+		self.navigationItem.hidesBackButton = true
+		
+		var logoutButton : UIBarButtonItem = UIBarButtonItem(title: "Salir", style: UIBarButtonItemStyle.Plain, target: self, action: "logout")
+
+		self.navigationItem.setRightBarButtonItem(logoutButton, animated: false)
+
 		
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
-    
+	
+	func logout() {
+		NSUserDefaults.standardUserDefaults().removeObjectForKey("username")
+		NSUserDefaults.standardUserDefaults().removeObjectForKey("password")
+		NSUserDefaults.standardUserDefaults().removeObjectForKey("localUrl")
+		NSUserDefaults.standardUserDefaults().removeObjectForKey("remoteUrl")
+		NSUserDefaults.standardUserDefaults().synchronize()
+		self.navigationController?.popToRootViewControllerAnimated(true)
+		self.navigationController?.pushViewController(LoginViewController(), animated: true)
+	}
+	
     override func viewWillAppear(animated: Bool) {
         println("OpenHABViewController viewWillAppear")
         super.viewWillAppear(animated)

@@ -344,6 +344,7 @@ SWIFT_CLASS("_TtC4GLAD21OpenHABViewController")
 - (void)openHABTrackingError:(NSError * __nonnull)error;
 - (void)sendCommand:(OpenHABItem * __nonnull)item command:(NSString * __nonnull)command;
 - (void)viewDidLoad;
+- (void)logout;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)handleApsRegistration:(NSNotification * __nonnull)note;
 - (void)doRegisterApps;

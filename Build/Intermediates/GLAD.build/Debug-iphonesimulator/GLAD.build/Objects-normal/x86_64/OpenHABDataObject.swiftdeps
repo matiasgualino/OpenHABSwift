@@ -7,8 +7,8 @@ class-members:
 top-level:
 - "OpenHABSitemap"
 - "OpenHABViewController"
-- "String"
 - "Int"
+- "String"
 member-access:
 - "PSs9AnyObject"
 - "C4GLAD17OpenHABDataObject"

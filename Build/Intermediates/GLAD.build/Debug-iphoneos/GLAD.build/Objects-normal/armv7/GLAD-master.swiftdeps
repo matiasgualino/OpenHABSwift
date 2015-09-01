@@ -1,5 +1,5 @@
 version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
-options: "20055f92c3967e62927e759c2d95afc9"
+options: "7fe0379e8bfd210455555db164c6d580"
 inputs: 
 - "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/GLAD/OpenHABSelectSitemapViewController.swift"
 - "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/GLAD/OpenHABSitemapPage.swift"
@@ -28,6 +28,7 @@ inputs:
 - "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/GLAD/Reachability+URL.swift"
 - "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/GLAD/OpenHABViewController.swift"
 - "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/GLAD/OpenHABSelectionTableViewController.swift"
+- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/GLAD/LoginViewController.swift"
 - "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/GLAD/SliderUITableViewCell.swift"
 - "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/GLAD/VideoUITableViewCell.swift"
 - "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/GLAD/NSMutableURLRequest+Auth.swift"

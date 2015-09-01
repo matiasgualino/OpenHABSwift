@@ -104,7 +104,6 @@ SWIFT_CLASS("_TtC4GLAD11AppDelegate")
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (nonatomic) UIWindow * __nullable window;
 - (BOOL)application:(UIApplication * __nonnull)application didFinishLaunchingWithOptions:(NSDictionary * __nullable)launchOptions;
-- (void)loadSettingsDefaults;
 - (void)applicationWillResignActive:(UIApplication * __nonnull)application;
 - (void)applicationDidEnterBackground:(UIApplication * __nonnull)application;
 - (void)applicationWillEnterForeground:(UIApplication * __nonnull)application;
@@ -130,6 +129,7 @@ SWIFT_CLASS("_TtC4GLAD22GenericUITableViewCell")
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 - (void)layoutSubviews;
 - (void)loadWidget:(OpenHABWidget * __nonnull)widgetToLoad;
+- (void)displayWidgetMapping;
 - (void)displayWidget;
 @end
 
@@ -195,6 +195,23 @@ SWIFT_CLASS("_TtC4GLAD20FrameUITableViewCell")
 
 
 
+@class UIButton;
+@class UITextField;
+
+SWIFT_CLASS("_TtC4GLAD19LoginViewController")
+@interface LoginViewController : UIViewController
+@property (nonatomic, readonly, copy) NSString * __nonnull LOGIN_URL;
+@property (nonatomic, weak) IBOutlet UIButton * __null_unspecified btnLogin;
+@property (nonatomic, weak) IBOutlet UITextField * __null_unspecified usernameTextField;
+@property (nonatomic, weak) IBOutlet UITextField * __null_unspecified passwordTextField;
+@property (nonatomic, weak) IBOutlet UIButton * __null_unspecified showHidePasswordButton;
+- (SWIFT_NULLABILITY(nonnull) instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)viewDidLoad;
+- (void)onShowHidePasswordButtonTouch:(id __nonnull)sender;
+- (void)login;
+@end
+
 
 @interface NSMutableURLRequest (SWIFT_EXTENSION(GLAD))
 - (void)setAuthCredentials:(NSString * __nonnull)username password:(NSString * __nonnull)password;
@@ -247,6 +264,7 @@ SWIFT_CLASS("_TtC4GLAD35OpenHABSelectionTableViewController")
 - (void)viewDidLoad;
 - (NSInteger)numberOfSectionsInTableView:(UITableView * __nonnull)tableView;
 - (NSInteger)tableView:(UITableView * __nonnull)tableView numberOfRowsInSection:(NSInteger)section;
+- (CGFloat)tableView:(UITableView * __nonnull)tableView heightForHeaderInSection:(NSInteger)section;
 - (UITableViewCell * __nonnull)tableView:(UITableView * __nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
 - (void)tableView:(UITableView * __nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
 @end
@@ -326,6 +344,7 @@ SWIFT_CLASS("_TtC4GLAD21OpenHABViewController")
 - (void)openHABTrackingError:(NSError * __nonnull)error;
 - (void)sendCommand:(OpenHABItem * __nonnull)item command:(NSString * __nonnull)command;
 - (void)viewDidLoad;
+- (void)logout;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)handleApsRegistration:(NSNotification * __nonnull)note;
 - (void)doRegisterApps;
@@ -406,7 +425,6 @@ SWIFT_CLASS("_TtC4GLAD12Reachability")
 - (BOOL)currentlyReachable;
 @end
 
-@class UIButton;
 
 SWIFT_CLASS("_TtC4GLAD28RollershutterUITableViewCell")
 @interface RollershutterUITableViewCell : GenericUITableViewCell
