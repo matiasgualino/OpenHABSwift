@@ -4,146 +4,126 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>AppIcon29x29.png</key>
-		<data>
-		B215mDjnkDKn6xjbSeX9mjfGhnM=
-		</data>
-		<key>AppIcon29x29@2x.png</key>
-		<data>
-		9VXiXWmQDC4t3ZUKrWQ7E9Ev5XA=
-		</data>
-		<key>AppIcon29x29@2x~ipad.png</key>
-		<data>
-		9VXiXWmQDC4t3ZUKrWQ7E9Ev5XA=
-		</data>
-		<key>AppIcon29x29@3x.png</key>
-		<data>
-		mxMQSiuB52xiTaHpHlxZE6UHrTQ=
-		</data>
 		<key>AppIcon29x29~ipad.png</key>
 		<data>
-		B215mDjnkDKn6xjbSeX9mjfGhnM=
+		vv+5OpO+VaWiUKIbkArCxCx7sxg=
 		</data>
 		<key>AppIcon40x40@2x.png</key>
 		<data>
-		Pkul0jXdbuZU6+OPkT6VzXPxbNk=
-		</data>
-		<key>AppIcon40x40@2x~ipad.png</key>
-		<data>
-		Pkul0jXdbuZU6+OPkT6VzXPxbNk=
+		r8DQJCx/DFMGFvYZdmyWdEoFOSQ=
 		</data>
 		<key>AppIcon40x40@3x.png</key>
 		<data>
-		oVh7vxi7FPl3kDPLF1Gobxr77Pc=
+		2rAEn9BKjPwo9AP2h3SyxYoIM2Q=
 		</data>
 		<key>AppIcon40x40~ipad.png</key>
 		<data>
-		xjHkCQ17e4YKZmBMmh5pVXyA5Ac=
+		cU1JlkZqJD+FLCzBo2Y9fB6cPCg=
 		</data>
 		<key>AppIcon50x50@2x~ipad.png</key>
 		<data>
-		TaABt+OtxcFa240I0Ec9QIG7zfU=
+		0967pncIGofHaU4FxtygQiTuV34=
 		</data>
 		<key>AppIcon50x50~ipad.png</key>
 		<data>
-		tl6oqiZD68JxL2J3C2uztSDmbtI=
+		RejtIY24go5PWdYrva39R8S9O/M=
 		</data>
 		<key>AppIcon57x57.png</key>
 		<data>
-		LCB+ueTnLpjaqzlQjSHIlXIy/1E=
+		GBS9sirTN2yvN6/sc0VsSRTZ1tE=
 		</data>
 		<key>AppIcon57x57@2x.png</key>
 		<data>
-		YAcdM2W77UGXi7g4zWVC5bvmvxU=
+		ENvudCPk7AAJx3hOg6b2eVvFF2o=
 		</data>
 		<key>AppIcon60x60@2x.png</key>
 		<data>
-		oVh7vxi7FPl3kDPLF1Gobxr77Pc=
+		2rAEn9BKjPwo9AP2h3SyxYoIM2Q=
 		</data>
 		<key>AppIcon60x60@3x.png</key>
 		<data>
-		VpSoQIEkFhMNOKyi+D3C/Ga9Ep4=
+		cqo3Iv7dFqNwk+XaOKEBf5RzC0M=
 		</data>
 		<key>AppIcon72x72@2x~ipad.png</key>
 		<data>
-		0EXloiJ1UHrnuUAKVwnXuvp1fjY=
+		RwHMJhPRhrhBBYsxZjw1XLftcJA=
 		</data>
 		<key>AppIcon72x72~ipad.png</key>
 		<data>
-		ckQiW/GxygWeqlMeDSplC4ZrRaM=
+		tkSGwcXPhOCu/0XkTpOlSV9RHyI=
 		</data>
 		<key>AppIcon76x76@2x~ipad.png</key>
 		<data>
-		tytGKn4ssGqK8qX0TU3SQPGR+Fg=
+		xJu53GuclcYhhEyYz011ueWP/ns=
 		</data>
 		<key>AppIcon76x76~ipad.png</key>
 		<data>
-		BVwiBtpxOJrk3CIOO7dofhIN1vM=
+		RHjgoravBj+j1mYAoF3ksybPYi0=
 		</data>
 		<key>Assets.car</key>
 		<data>
-		GkPeP87EFWUylmey4T+GobjI1H8=
+		4VsVofYCYMSU9JWWJ2WvaNqKrmU=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			GNL6JW4LBOKUTQ2Y9wtBahSqcYY=
+			KzkFRYye6R/VccAUpVsfo2rXk8I=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
 		<key>ChartUITableViewCell.nib</key>
 		<data>
-		euOVSmSUaxTiwEFOv9yKReaSvsA=
+		FCNF2WVV56XGXdJRHi+J+3QboPM=
 		</data>
 		<key>ColorPickerUITableViewCell.nib</key>
 		<data>
-		YVGVTVeTICuhzsBOjAlY4r3xexE=
+		IbZhQY7lnGbxrMKuzxyrybSQf6A=
 		</data>
 		<key>FrameUITableViewCell.nib</key>
 		<data>
-		k4MZi5w3jOPfp/e2knTstVDR9bU=
+		7MJbNGD1z7GxekZWv8KNmDsYVaM=
 		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
-		hnq7lytwhJZHIe92SHmwRpOynZQ=
+		9f+InoTdvulto9hraBlks+Q1Oqk=
 		</data>
 		<key>Frameworks/libswiftCoreAudio.dylib</key>
 		<data>
-		5y0eMjHvKNcH+Dvj1n92MvDuVVY=
+		KNIVWAj16bK4O/aScESE7883grQ=
 		</data>
 		<key>Frameworks/libswiftCoreGraphics.dylib</key>
 		<data>
-		Mg7LHgInbuzY+e4/ESv43HyAeO4=
+		PofIpTQaTOy+wrX/wpOeBPEuGM8=
 		</data>
 		<key>Frameworks/libswiftCoreImage.dylib</key>
 		<data>
-		Pj23bwkFmBNjq0TqxxcUCRX/15Y=
+		3OVwSlquoYpnsO/L6rJa6dTzPRI=
 		</data>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<data>
-		jnwug653EZ969bva3FDGmP6bfyY=
+		O2lNuKwx2v8wQzXORelBpoJVRwY=
 		</data>
 		<key>Frameworks/libswiftDispatch.dylib</key>
 		<data>
-		HqbJQ315e0F+pgTtvHrAPztDI/s=
+		+zN+gQqu1H+pHPmAyAR8u5QANnY=
 		</data>
 		<key>Frameworks/libswiftFoundation.dylib</key>
 		<data>
-		1++CO9KeVAMdGvRoj8TcbkE7dKY=
+		Rep7JFPexA3075dD01/LKnBNc+g=
 		</data>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
 		<data>
-		lGSmQAW32JlLjTyJep8vNNhpp38=
+		T0RhprdhF/UF5gEp7WuPXHbvIoU=
 		</data>
 		<key>Frameworks/libswiftSecurity.dylib</key>
 		<data>
-		q6L3P2WNEY3ipwVzLFkEcc6gTbM=
+		mfX+V4DIp60VtinO2qmrv0/JqHY=
 		</data>
 		<key>Frameworks/libswiftUIKit.dylib</key>
 		<data>
-		Y6LLxE82h8JOVN/PcK0E7siyQug=
+		HD50VNeSkfJMGDgPu6DyMUnrsY4=
 		</data>
 		<key>GLAD.momd/GLAD.mom</key>
 		<data>
@@ -151,7 +131,7 @@
 		</data>
 		<key>GLAD.momd/GLAD.omo</key>
 		<data>
-		kA0uojNQdLyYx/RjekHNpesPzgI=
+		zC8WuGxvb0TvMnsRHycFLmktxnY=
 		</data>
 		<key>GLAD.momd/VersionInfo.plist</key>
 		<data>
@@ -159,15 +139,15 @@
 		</data>
 		<key>GenericUITableViewCell.nib</key>
 		<data>
-		yvNsQ5VN7Jr+ffdFRLGn9GhHsLY=
+		Vugq5o4zBHcb3o8vkmuHzsdSRYA=
 		</data>
 		<key>ImageUITableViewCell.nib</key>
 		<data>
-		IZnC7DHZrLll7TNlQ5hXyjECBS4=
+		nlxOCm+r0ubuTJGdodzMF3czozg=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		TOtHIuOWmKArFPbqu+A5iKXzVhQ=
+		AKUeVwTrBIheLwPAaRt6HfMJi1E=
 		</data>
 		<key>LaunchImage-700-568h@2x.png</key>
 		<data>
@@ -175,7 +155,7 @@
 		</data>
 		<key>LoginViewController.nib</key>
 		<data>
-		J5J5/s87NTrA8gpIB/FA2v/URqk=
+		QmQ6rlhBLETkZvfSkO7aCCDvRHI=
 		</data>
 		<key>NotificationBackgroundError.png</key>
 		<data>
@@ -243,15 +223,15 @@
 		</data>
 		<key>OpenHABSelectSitemapViewController.nib</key>
 		<data>
-		tiYHtlG5M6Hy6oaXxFKCXGxDs9k=
+		vnV8zKALlNBlEtRFJpIGNXbLn0Q=
 		</data>
 		<key>OpenHABSelectionTableViewController.nib</key>
 		<data>
-		lao6u+R/obEkaXma8y9cuJ/OrC8=
+		TMAfzANu2YZg/LPecGjhSqcYyXQ=
 		</data>
 		<key>OpenHABViewController.nib</key>
 		<data>
-		tP5FAkXGR4ZaTWM2766CceNpEk8=
+		lM5VeeGZxu1xkk5pP9DB5Fpb/aQ=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -259,27 +239,27 @@
 		</data>
 		<key>RollershutterUITableViewCell.nib</key>
 		<data>
-		MpUPVvnYWGiddAvuGd+Goxn587E=
+		PIyvywpjunG0XWmnKta8sgilHTs=
 		</data>
 		<key>SegmentedUITableViewCell.nib</key>
 		<data>
-		DzeiS4STYbDQbh9r7IQPjcOmCqM=
+		t1Ynp0elPsBlRTqwvY6zoGKu1S8=
 		</data>
 		<key>SelectionUITableViewCell.nib</key>
 		<data>
-		5kiXmJXr2Yr+0jspQn5BNeXTYqA=
+		9MvcU2XEdzxa4CCxXE1RwFS+dPE=
 		</data>
 		<key>SetpointUITableViewCell.nib</key>
 		<data>
-		ktpMLEbkpi19794x0QSVBK/uRCk=
+		YMYriGSrSXDOur1YfN/z3sVNjwM=
 		</data>
 		<key>SliderUITableViewCell.nib</key>
 		<data>
-		g3EsUFtAu1iDpPmpy8UtBOGY5lI=
+		jZ9II+e6eULaY2O3zAMK18PegfY=
 		</data>
 		<key>SwitchUITableViewCell.nib</key>
 		<data>
-		+E+5Dg19CXj5NXNb938AyfXgDlg=
+		J0pAP+bzPUp1IwbuHoDfKVEOcuI=
 		</data>
 		<key>TSMessagesDefaultDesign.json</key>
 		<data>
@@ -287,11 +267,11 @@
 		</data>
 		<key>VideoUITableViewCell.nib</key>
 		<data>
-		0OJihNsftlkQVOEqpLNjMl8VNpE=
+		Xe8UR7cFYq1fM5t8qeBbqpE6YK4=
 		</data>
 		<key>WebUITableViewCell.nib</key>
 		<data>
-		9Brzf47rttL0eCebQX3+zKcPulc=
+		qUYj4uo31soQwZCUTFDw/A7qz7I=
 		</data>
 		<key>dsym_upload.sh</key>
 		<data>
@@ -299,7 +279,7 @@
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		Fql/ku6nyfuHvRwoJljwAgIRfG8=
+		TIPZlME1Gr10l1Cr5D3AU82+0Q4=
 		</data>
 		<key>nko_brightness_guide.png</key>
 		<data>
@@ -316,146 +296,126 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>AppIcon29x29.png</key>
-		<data>
-		B215mDjnkDKn6xjbSeX9mjfGhnM=
-		</data>
-		<key>AppIcon29x29@2x.png</key>
-		<data>
-		9VXiXWmQDC4t3ZUKrWQ7E9Ev5XA=
-		</data>
-		<key>AppIcon29x29@2x~ipad.png</key>
-		<data>
-		9VXiXWmQDC4t3ZUKrWQ7E9Ev5XA=
-		</data>
-		<key>AppIcon29x29@3x.png</key>
-		<data>
-		mxMQSiuB52xiTaHpHlxZE6UHrTQ=
-		</data>
 		<key>AppIcon29x29~ipad.png</key>
 		<data>
-		B215mDjnkDKn6xjbSeX9mjfGhnM=
+		vv+5OpO+VaWiUKIbkArCxCx7sxg=
 		</data>
 		<key>AppIcon40x40@2x.png</key>
 		<data>
-		Pkul0jXdbuZU6+OPkT6VzXPxbNk=
-		</data>
-		<key>AppIcon40x40@2x~ipad.png</key>
-		<data>
-		Pkul0jXdbuZU6+OPkT6VzXPxbNk=
+		r8DQJCx/DFMGFvYZdmyWdEoFOSQ=
 		</data>
 		<key>AppIcon40x40@3x.png</key>
 		<data>
-		oVh7vxi7FPl3kDPLF1Gobxr77Pc=
+		2rAEn9BKjPwo9AP2h3SyxYoIM2Q=
 		</data>
 		<key>AppIcon40x40~ipad.png</key>
 		<data>
-		xjHkCQ17e4YKZmBMmh5pVXyA5Ac=
+		cU1JlkZqJD+FLCzBo2Y9fB6cPCg=
 		</data>
 		<key>AppIcon50x50@2x~ipad.png</key>
 		<data>
-		TaABt+OtxcFa240I0Ec9QIG7zfU=
+		0967pncIGofHaU4FxtygQiTuV34=
 		</data>
 		<key>AppIcon50x50~ipad.png</key>
 		<data>
-		tl6oqiZD68JxL2J3C2uztSDmbtI=
+		RejtIY24go5PWdYrva39R8S9O/M=
 		</data>
 		<key>AppIcon57x57.png</key>
 		<data>
-		LCB+ueTnLpjaqzlQjSHIlXIy/1E=
+		GBS9sirTN2yvN6/sc0VsSRTZ1tE=
 		</data>
 		<key>AppIcon57x57@2x.png</key>
 		<data>
-		YAcdM2W77UGXi7g4zWVC5bvmvxU=
+		ENvudCPk7AAJx3hOg6b2eVvFF2o=
 		</data>
 		<key>AppIcon60x60@2x.png</key>
 		<data>
-		oVh7vxi7FPl3kDPLF1Gobxr77Pc=
+		2rAEn9BKjPwo9AP2h3SyxYoIM2Q=
 		</data>
 		<key>AppIcon60x60@3x.png</key>
 		<data>
-		VpSoQIEkFhMNOKyi+D3C/Ga9Ep4=
+		cqo3Iv7dFqNwk+XaOKEBf5RzC0M=
 		</data>
 		<key>AppIcon72x72@2x~ipad.png</key>
 		<data>
-		0EXloiJ1UHrnuUAKVwnXuvp1fjY=
+		RwHMJhPRhrhBBYsxZjw1XLftcJA=
 		</data>
 		<key>AppIcon72x72~ipad.png</key>
 		<data>
-		ckQiW/GxygWeqlMeDSplC4ZrRaM=
+		tkSGwcXPhOCu/0XkTpOlSV9RHyI=
 		</data>
 		<key>AppIcon76x76@2x~ipad.png</key>
 		<data>
-		tytGKn4ssGqK8qX0TU3SQPGR+Fg=
+		xJu53GuclcYhhEyYz011ueWP/ns=
 		</data>
 		<key>AppIcon76x76~ipad.png</key>
 		<data>
-		BVwiBtpxOJrk3CIOO7dofhIN1vM=
+		RHjgoravBj+j1mYAoF3ksybPYi0=
 		</data>
 		<key>Assets.car</key>
 		<data>
-		GkPeP87EFWUylmey4T+GobjI1H8=
+		4VsVofYCYMSU9JWWJ2WvaNqKrmU=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			GNL6JW4LBOKUTQ2Y9wtBahSqcYY=
+			KzkFRYye6R/VccAUpVsfo2rXk8I=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
 		<key>ChartUITableViewCell.nib</key>
 		<data>
-		euOVSmSUaxTiwEFOv9yKReaSvsA=
+		FCNF2WVV56XGXdJRHi+J+3QboPM=
 		</data>
 		<key>ColorPickerUITableViewCell.nib</key>
 		<data>
-		YVGVTVeTICuhzsBOjAlY4r3xexE=
+		IbZhQY7lnGbxrMKuzxyrybSQf6A=
 		</data>
 		<key>FrameUITableViewCell.nib</key>
 		<data>
-		k4MZi5w3jOPfp/e2knTstVDR9bU=
+		7MJbNGD1z7GxekZWv8KNmDsYVaM=
 		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
-		hnq7lytwhJZHIe92SHmwRpOynZQ=
+		9f+InoTdvulto9hraBlks+Q1Oqk=
 		</data>
 		<key>Frameworks/libswiftCoreAudio.dylib</key>
 		<data>
-		5y0eMjHvKNcH+Dvj1n92MvDuVVY=
+		KNIVWAj16bK4O/aScESE7883grQ=
 		</data>
 		<key>Frameworks/libswiftCoreGraphics.dylib</key>
 		<data>
-		Mg7LHgInbuzY+e4/ESv43HyAeO4=
+		PofIpTQaTOy+wrX/wpOeBPEuGM8=
 		</data>
 		<key>Frameworks/libswiftCoreImage.dylib</key>
 		<data>
-		Pj23bwkFmBNjq0TqxxcUCRX/15Y=
+		3OVwSlquoYpnsO/L6rJa6dTzPRI=
 		</data>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<data>
-		jnwug653EZ969bva3FDGmP6bfyY=
+		O2lNuKwx2v8wQzXORelBpoJVRwY=
 		</data>
 		<key>Frameworks/libswiftDispatch.dylib</key>
 		<data>
-		HqbJQ315e0F+pgTtvHrAPztDI/s=
+		+zN+gQqu1H+pHPmAyAR8u5QANnY=
 		</data>
 		<key>Frameworks/libswiftFoundation.dylib</key>
 		<data>
-		1++CO9KeVAMdGvRoj8TcbkE7dKY=
+		Rep7JFPexA3075dD01/LKnBNc+g=
 		</data>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
 		<data>
-		lGSmQAW32JlLjTyJep8vNNhpp38=
+		T0RhprdhF/UF5gEp7WuPXHbvIoU=
 		</data>
 		<key>Frameworks/libswiftSecurity.dylib</key>
 		<data>
-		q6L3P2WNEY3ipwVzLFkEcc6gTbM=
+		mfX+V4DIp60VtinO2qmrv0/JqHY=
 		</data>
 		<key>Frameworks/libswiftUIKit.dylib</key>
 		<data>
-		Y6LLxE82h8JOVN/PcK0E7siyQug=
+		HD50VNeSkfJMGDgPu6DyMUnrsY4=
 		</data>
 		<key>GLAD.momd/GLAD.mom</key>
 		<data>
@@ -463,7 +423,7 @@
 		</data>
 		<key>GLAD.momd/GLAD.omo</key>
 		<data>
-		kA0uojNQdLyYx/RjekHNpesPzgI=
+		zC8WuGxvb0TvMnsRHycFLmktxnY=
 		</data>
 		<key>GLAD.momd/VersionInfo.plist</key>
 		<data>
@@ -471,11 +431,11 @@
 		</data>
 		<key>GenericUITableViewCell.nib</key>
 		<data>
-		yvNsQ5VN7Jr+ffdFRLGn9GhHsLY=
+		Vugq5o4zBHcb3o8vkmuHzsdSRYA=
 		</data>
 		<key>ImageUITableViewCell.nib</key>
 		<data>
-		IZnC7DHZrLll7TNlQ5hXyjECBS4=
+		nlxOCm+r0ubuTJGdodzMF3czozg=
 		</data>
 		<key>LaunchImage-700-568h@2x.png</key>
 		<data>
@@ -483,7 +443,7 @@
 		</data>
 		<key>LoginViewController.nib</key>
 		<data>
-		J5J5/s87NTrA8gpIB/FA2v/URqk=
+		QmQ6rlhBLETkZvfSkO7aCCDvRHI=
 		</data>
 		<key>NotificationBackgroundError.png</key>
 		<data>
@@ -551,39 +511,39 @@
 		</data>
 		<key>OpenHABSelectSitemapViewController.nib</key>
 		<data>
-		tiYHtlG5M6Hy6oaXxFKCXGxDs9k=
+		vnV8zKALlNBlEtRFJpIGNXbLn0Q=
 		</data>
 		<key>OpenHABSelectionTableViewController.nib</key>
 		<data>
-		lao6u+R/obEkaXma8y9cuJ/OrC8=
+		TMAfzANu2YZg/LPecGjhSqcYyXQ=
 		</data>
 		<key>OpenHABViewController.nib</key>
 		<data>
-		tP5FAkXGR4ZaTWM2766CceNpEk8=
+		lM5VeeGZxu1xkk5pP9DB5Fpb/aQ=
 		</data>
 		<key>RollershutterUITableViewCell.nib</key>
 		<data>
-		MpUPVvnYWGiddAvuGd+Goxn587E=
+		PIyvywpjunG0XWmnKta8sgilHTs=
 		</data>
 		<key>SegmentedUITableViewCell.nib</key>
 		<data>
-		DzeiS4STYbDQbh9r7IQPjcOmCqM=
+		t1Ynp0elPsBlRTqwvY6zoGKu1S8=
 		</data>
 		<key>SelectionUITableViewCell.nib</key>
 		<data>
-		5kiXmJXr2Yr+0jspQn5BNeXTYqA=
+		9MvcU2XEdzxa4CCxXE1RwFS+dPE=
 		</data>
 		<key>SetpointUITableViewCell.nib</key>
 		<data>
-		ktpMLEbkpi19794x0QSVBK/uRCk=
+		YMYriGSrSXDOur1YfN/z3sVNjwM=
 		</data>
 		<key>SliderUITableViewCell.nib</key>
 		<data>
-		g3EsUFtAu1iDpPmpy8UtBOGY5lI=
+		jZ9II+e6eULaY2O3zAMK18PegfY=
 		</data>
 		<key>SwitchUITableViewCell.nib</key>
 		<data>
-		+E+5Dg19CXj5NXNb938AyfXgDlg=
+		J0pAP+bzPUp1IwbuHoDfKVEOcuI=
 		</data>
 		<key>TSMessagesDefaultDesign.json</key>
 		<data>
@@ -591,11 +551,11 @@
 		</data>
 		<key>VideoUITableViewCell.nib</key>
 		<data>
-		0OJihNsftlkQVOEqpLNjMl8VNpE=
+		Xe8UR7cFYq1fM5t8qeBbqpE6YK4=
 		</data>
 		<key>WebUITableViewCell.nib</key>
 		<data>
-		9Brzf47rttL0eCebQX3+zKcPulc=
+		qUYj4uo31soQwZCUTFDw/A7qz7I=
 		</data>
 		<key>dsym_upload.sh</key>
 		<data>
@@ -603,7 +563,7 @@
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		Fql/ku6nyfuHvRwoJljwAgIRfG8=
+		TIPZlME1Gr10l1Cr5D3AU82+0Q4=
 		</data>
 		<key>nko_brightness_guide.png</key>
 		<data>

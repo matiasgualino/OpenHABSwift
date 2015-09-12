@@ -7,19 +7,19 @@ class-members:
 - "reachabilityWithUrl"
 - "currentlyReachable"
 top-level:
-- !private "||"
-- !private "=="
-- "NSURL"
 - "String"
 - "Reachability"
 - "Bool"
+- "NSURL"
+- !private "=="
+- !private "||"
 - !private "BooleanLiteralType"
 member-access:
-- "CSo8NSObject"
 - "C4GLAD12Reachability"
-- !private "OC4GLAD12Reachability13NetworkStatus"
 - !private "Sb"
+- !private "OC4GLAD12Reachability13NetworkStatus"
 - !private "CSo5NSURL"
+- "CSo8NSObject"
 dynamic-lookup:
 cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/Swift.swiftmodule"
@@ -77,7 +77,3 @@ cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/include/libxml2/libxml/xpathInternals.h"
 - "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Pods/Headers/Public/NKOColorPickerView/NKOColorPickerView.h"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/CoreAudio.swiftmodule"
-- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Build/Products/Debug-iphoneos/Alamofire.framework/Modules/Alamofire.swiftmodule/arm64.swiftmodule"
-- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Build/Products/Debug-iphoneos/Alamofire.framework/Headers/Alamofire-Swift.h"
-- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Build/Products/Debug-iphoneos/Alamofire.framework/Headers/Alamofire.h"
-- "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/Build/Products/Debug-iphoneos/Alamofire.framework/Modules/module.modulemap"

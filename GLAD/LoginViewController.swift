@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class LoginViewController: UIViewController {
 
@@ -103,20 +102,30 @@ class LoginViewController: UIViewController {
 			loginRequest.setAuthCredentials(self.usernameTextField.text, password: self.passwordTextField.text)
 			loginRequest.setValue("application/json", forHTTPHeaderField: "Accept")
 			
-			Alamofire.request(loginRequest)
-				.responseJSON { _, _, JSON, error in
-					if error != nil {
-						self.showErrorLoginAlert("Ocurrió un problema en el login. Por favor intenta nuevamente.")
-					} else {
-						NSUserDefaults.standardUserDefaults().setValue(self.usernameTextField.text, forKey: "username")
-						NSUserDefaults.standardUserDefaults().setValue(self.passwordTextField.text, forKey: "password")
-/*						NSUserDefaults.standardUserDefaults().setValue("https://" + (JSON!["address"] as? String)! + ":8443", forKey: "localUrl")*/
-						NSUserDefaults.standardUserDefaults().setValue("https://" + (JSON!["address"] as? String)! + ":8443", forKey: "remoteUrl")
-						NSUserDefaults.standardUserDefaults().synchronize()
-						self.navigationController?.popToRootViewControllerAnimated(true)
-						self.navigationController?.pushViewController(OpenHABViewController(), animated: true)
-					}
-			}
+			var loginOperation = AFHTTPRequestOperation(request: loginRequest)
+			var policy : AFSecurityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.None)
+			policy.allowInvalidCertificates = true
+			loginOperation.securityPolicy = policy
+			
+			loginOperation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
+				NSUserDefaults.standardUserDefaults().setValue(self.usernameTextField.text, forKey: "username")
+				NSUserDefaults.standardUserDefaults().setValue(self.passwordTextField.text, forKey: "password")
+				/*						NSUserDefaults.standardUserDefaults().setValue("https://" + (JSON!["address"] as? String)! + ":8443", forKey: "localUrl")*/
+				var error: NSError?
+				var jsonData: NSDictionary? = NSJSONSerialization.JSONObjectWithData((responseObject as? NSData)!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSDictionary
+				if jsonData != nil {
+					NSUserDefaults.standardUserDefaults().setValue("https://" + (jsonData!["address"] as? String)! + ":8443", forKey: "remoteUrl")
+					NSUserDefaults.standardUserDefaults().synchronize()
+					self.navigationController?.popToRootViewControllerAnimated(true)
+					self.navigationController?.pushViewController(OpenHABViewController(), animated: true)
+				} else {
+					self.showErrorLoginAlert("Ocurrió un problema en el login. Por favor intenta nuevamente.")
+				}
+				}, failure: { (operation, error) -> Void in
+					self.showErrorLoginAlert("Ocurrió un problema en el login. Por favor intenta nuevamente.")
+			})
+			
+			loginOperation.start()
 		}
 	}
 	

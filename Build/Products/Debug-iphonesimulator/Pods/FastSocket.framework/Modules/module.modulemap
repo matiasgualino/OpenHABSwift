@@ -1,6 +1,0 @@
-framework module FastSocket {
-  umbrella header "Pods-FastSocket-umbrella.h"
-
-  export *
-  module * { export * }
-}
