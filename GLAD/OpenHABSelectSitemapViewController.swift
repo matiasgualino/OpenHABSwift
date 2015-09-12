@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class OpenHABSelectSitemapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -83,33 +82,39 @@ class OpenHABSelectSitemapViewController: UIViewController, UITableViewDelegate,
         var sitemapsUrl : NSURL? = NSURL(string: sitemapsUrlString)
         var sitemapsRequest : NSMutableURLRequest = NSMutableURLRequest(URL: sitemapsUrl!)
         sitemapsRequest.setAuthCredentials(self.openHABUsername, password:self.openHABPassword)
-        
-        Alamofire.request(sitemapsRequest).response({
-            (_, response, data, error) in
-            
-            if error != nil {
-                println("Error:------> \(error!.description)")
-                println("Error Code:------> \(response?.statusCode)")
-            } else {
-                self.sitemaps.removeAll(keepCapacity: false)
-                println("Sitemap response")
-                println("openHAB 1")
-                var error : NSErrorPointer = NSErrorPointer()
-                var doc : GDataXMLDocument? = GDataXMLDocument(data: data! as! NSData, error: error)
-                if doc == nil {
-                    return
-                }
-                println(doc!.rootElement().name())
-                if doc!.rootElement().name() == "sitemaps" {
-                    for element in doc!.rootElement().elementsForName("sitemap") {
-                        var sitemap : OpenHABSitemap = OpenHABSitemap.initWithXML((element as? GDataXMLElement)!)
-                        self.sitemaps.append(sitemap)
-                    }
-                } else {
-                    return
-                }
-                self.tableView.reloadData()
-            }
-        })
+		
+		var operation = AFHTTPRequestOperation(request: sitemapsRequest)
+		var policy : AFSecurityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.None)
+		policy.allowInvalidCertificates = true
+		operation.securityPolicy = policy
+		
+		operation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
+			self.sitemaps.removeAll(keepCapacity: false)
+			println("Sitemap response")
+			println("openHAB 1")
+			var error : NSErrorPointer = NSErrorPointer()
+			var data = responseObject as? NSData
+			if data != nil {
+				var doc : GDataXMLDocument? = GDataXMLDocument(data: data, error: error)
+				if doc == nil {
+					return
+				}
+				println(doc!.rootElement().name())
+				if doc!.rootElement().name() == "sitemaps" {
+					for element in doc!.rootElement().elementsForName("sitemap") {
+						var sitemap : OpenHABSitemap = OpenHABSitemap.initWithXML((element as? GDataXMLElement)!)
+						self.sitemaps.append(sitemap)
+					}
+				} else {
+					return
+				}
+				self.tableView.reloadData()
+			}
+		}, failure: { (operation, error) -> Void in
+			println("Error:------> \(error!.description)")
+			println("Error Code:------> \(operation.response?.statusCode)")
+		})
+		
+		operation.start()
     }
 }

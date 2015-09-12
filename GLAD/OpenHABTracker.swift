@@ -52,7 +52,7 @@ class OpenHABTracker : NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelega
                 } else {
                     println("OpenHABTracker network is Wifi")
                     // Check if local URL is configured, if yes
-                    if count(openHABLocalUrl) > 0 {
+                    if openHABLocalUrl != nil && count(openHABLocalUrl) > 0 {
                         if self.isURLReachable(NSURL(string: openHABLocalUrl)!) {
                             self.trackedLocalUrl()
                         } else {
@@ -152,8 +152,8 @@ class OpenHABTracker : NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelega
         if resolvedNetService.addresses != nil {
             var dataAddress : NSData? = resolvedNetService.addresses![0] as? NSData
             if dataAddress != nil {
-                println("OpenHABTracker discovered \(self.getStringIpFromAddressData(dataAddress!)):\(resolvedNetService.port)")
-                var openhabUrl : String = "https://\(self.getStringIpFromAddressData(dataAddress!)):\(resolvedNetService.port)"
+                println("OpenHABTracker discovered \(self.getStringIpFromAddressData(dataAddress!)!):\(resolvedNetService.port)")
+                var openhabUrl : String = "https://\(self.getStringIpFromAddressData(dataAddress!)!):\(resolvedNetService.port)"
                 self.trackedDiscoveryUrl(openhabUrl)
             }
         }
@@ -224,12 +224,17 @@ class OpenHABTracker : NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelega
         return string
     }
     
-    func getStringIpFromAddressData(dataIn: NSData) -> String? {
-        var ipString : String? = nil
-        let ptr = UnsafePointer<sockaddr_in>(dataIn.bytes)
-        ipString = "\(inet_ntoa(ptr.memory.sin_addr))"
-        return ipString
+    func getStringIpFromAddressData(address: NSData) -> String? {
+		let ptr = UnsafePointer<sockaddr_in>(address.bytes)
+		var addr = ptr.memory.sin_addr
+		var buf = UnsafeMutablePointer<Int8>.alloc(Int(INET6_ADDRSTRLEN))
+		var family = ptr.memory.sin_family
+		var ipc = UnsafePointer<Int8>()
+		if family == __uint8_t(AF_INET) {
+			ipc = inet_ntop(Int32(family), &addr, buf, __uint32_t(INET6_ADDRSTRLEN))
+		}
+		return String.fromCString(ipc)
     }
-    
-    
+	
+	
 }

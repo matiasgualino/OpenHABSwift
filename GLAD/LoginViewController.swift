@@ -110,7 +110,7 @@ class LoginViewController: UIViewController {
 					} else {
 						NSUserDefaults.standardUserDefaults().setValue(self.usernameTextField.text, forKey: "username")
 						NSUserDefaults.standardUserDefaults().setValue(self.passwordTextField.text, forKey: "password")
-						NSUserDefaults.standardUserDefaults().setValue("https://" + (JSON!["address"] as? String)! + ":8443", forKey: "localUrl")
+/*						NSUserDefaults.standardUserDefaults().setValue("https://" + (JSON!["address"] as? String)! + ":8443", forKey: "localUrl")*/
 						NSUserDefaults.standardUserDefaults().setValue("https://" + (JSON!["address"] as? String)! + ":8443", forKey: "remoteUrl")
 						NSUserDefaults.standardUserDefaults().synchronize()
 						self.navigationController?.popToRootViewControllerAnimated(true)

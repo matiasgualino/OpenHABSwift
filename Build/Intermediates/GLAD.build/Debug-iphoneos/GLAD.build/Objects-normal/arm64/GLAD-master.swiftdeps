@@ -1,5 +1,5 @@
 version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
-options: "d319a65cb9efcb0f367c86e27124037a"
+options: "15b7a207adf9b1e2e0e1af35bb4ab7ed"
 inputs: 
 - "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/GLAD/OpenHABSelectSitemapViewController.swift"
 - "/Users/mgualino/Desktop/Development/Glad/OpenHABSwift/GLAD/OpenHABSitemapPage.swift"

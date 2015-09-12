@@ -296,7 +296,7 @@ SWIFT_CLASS("_TtC4GLAD14OpenHABTracker")
 - (BOOL)isNetworkConnected2;
 - (BOOL)isNetworkWiFi;
 - (BOOL)isURLReachable:(NSURL * __nonnull)url;
-- (NSString * __nullable)getStringIpFromAddressData:(NSData * __nonnull)dataIn;
+- (NSString * __nullable)getStringIpFromAddressData:(NSData * __nonnull)address;
 @end
 
 @class SwitchUITableViewCell;
@@ -308,6 +308,7 @@ SWIFT_CLASS("_TtC4GLAD14OpenHABTracker")
 @class WebUITableViewCell;
 @class VideoUITableViewCell;
 @class UIPickerView;
+@class AFHTTPRequestOperation;
 @class NSError;
 
 SWIFT_CLASS("_TtC4GLAD21OpenHABViewController")
@@ -337,6 +338,8 @@ SWIFT_CLASS("_TtC4GLAD21OpenHABViewController")
 @property (nonatomic, copy) NSString * __null_unspecified deviceId;
 @property (nonatomic, copy) NSString * __null_unspecified deviceName;
 @property (nonatomic, copy) NSString * __null_unspecified atmosphereTrackingId;
+@property (nonatomic) AFHTTPRequestOperation * __null_unspecified currentPageOperation;
+@property (nonatomic) AFHTTPRequestOperation * __null_unspecified commandOperation;
 - (SWIFT_NULLABILITY(nonnull) instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)openHABTracked:(NSString * __null_unspecified)openHABUrl;
@@ -345,9 +348,8 @@ SWIFT_CLASS("_TtC4GLAD21OpenHABViewController")
 - (void)sendCommand:(OpenHABItem * __nonnull)item command:(NSString * __nonnull)command;
 - (void)viewDidLoad;
 - (void)logout;
+- (void)viewWillDisappear:(BOOL)animated;
 - (void)viewWillAppear:(BOOL)animated;
-- (void)handleApsRegistration:(NSNotification * __nonnull)note;
-- (void)doRegisterApps;
 - (void)didEnterBackground:(NSNotification * __nonnull)notification;
 - (void)didBecomeActive:(NSNotification * __nonnull)notification;
 - (void)restart;

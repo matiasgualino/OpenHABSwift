@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-
 
 class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, OpenHABSitemapPageDelegate, OpenHABTrackerDelegate {
 
@@ -48,7 +46,10 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
     var deviceName : String!
     var atmosphereTrackingId : String!
     var selectedWidgetRow : Int!
-    
+	
+	var currentPageOperation : AFHTTPRequestOperation!
+	var commandOperation : AFHTTPRequestOperation!
+	
 	init() {
         super.init(nibName: "OpenHABViewController", bundle: nil)
     }
@@ -105,23 +106,26 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func sendCommand(item: OpenHABItem, command: String) {
         var commandUrl : NSURL = NSURL(string: item.link)!
-		var apiManager : AFHTTPSessionManager = AFHTTPSessionManager(baseURL: commandUrl)
-		var policy : AFSecurityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.Certificate)
-		policy.allowInvalidCertificates = true
-		apiManager.securityPolicy = policy
         var commandRequest : NSMutableURLRequest = NSMutableURLRequest(URL: commandUrl)
         commandRequest.HTTPMethod = "POST"
         commandRequest.HTTPBody = command.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
         commandRequest.setAuthCredentials(self.openHABUsername, password: self.openHABPassword)
         commandRequest.setValue("text/plain", forHTTPHeaderField: "Content-type")
 
-        Alamofire.request(commandRequest).response { (request, response, data, error) -> Void in
-            println("COMANDO ENVIADO")
-            println(request)
-            println(response)
-            println(data)
-        }
-    }
+		commandOperation = AFHTTPRequestOperation(request: commandRequest)
+		var policy : AFSecurityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.None)
+		policy.allowInvalidCertificates = true
+		commandOperation.securityPolicy = policy
+
+		commandOperation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
+			println("COMANDO ENVIADO")
+		}, failure: { (operation, error) -> Void in
+			println("ERROR ")
+			println(error)
+		})
+		
+		commandOperation.start()
+	}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,8 +139,6 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
         backgroundImageView.contentMode = UIViewContentMode.ScaleAspectFill
         self.widgetTableView.backgroundView = backgroundImageView
         self.widgetTableView.tableFooterView = UIView()
-		
-		self.navigationItem.hidesBackButton = true
 		
 		var logoutButton : UIBarButtonItem = UIBarButtonItem(title: "Salir", style: UIBarButtonItemStyle.Plain, target: self, action: "logout")
 
@@ -157,6 +159,14 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
 		self.navigationController?.pushViewController(LoginViewController(), animated: true)
 	}
 	
+	override func viewWillDisappear(animated: Bool) {
+		if currentPageOperation != nil {
+			currentPageOperation!.cancel()
+			currentPageOperation = nil
+		}
+		super.viewWillDisappear(animated)
+	}
+	
     override func viewWillAppear(animated: Bool) {
         println("OpenHABViewController viewWillAppear")
         super.viewWillAppear(animated)
@@ -171,7 +181,6 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
         if self.idleOff != nil {
             UIApplication.sharedApplication().idleTimerDisabled = true
         }
-        self.doRegisterApps()
         // if pageUrl = nil it means we are the first opened OpenHABViewController
         if pageUrl == nil {
             // Set self as root view controller
@@ -196,52 +205,13 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
-    
-    func handleApsRegistration(note: NSNotification) {
-        println("handleApsRegistration")
-        var theData : [NSObject : AnyObject]? = note.userInfo
-        if theData != nil {
-            self.deviceId = theData!["deviceId"] as? String
-            self.deviceToken = theData!["deviceToken"] as? String
-            self.deviceName = theData!["deviceName"] as? String
-            self.doRegisterApps()
-        }
-    }
-    
-    func doRegisterApps() {
-        var prefs : NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        if prefs.stringForKey("remoteUrl") == "https://my.openhab.org" {
-            if deviceId != nil && deviceToken != nil && deviceName != nil {
-                println("Registering with my.openHAB")
-                var registrationUrlString : String = "https://my.openhab.org/addAppleRegistration?regId=\(deviceToken)&deviceId=\(deviceId)&deviceModel=\(deviceName)"
-                var registrationUrl : NSURL? = NSURL(string: registrationUrlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
-                println("Registration URL = \(registrationUrl!.absoluteString)")
-                var registrationRequest : NSMutableURLRequest? = NSMutableURLRequest(URL: registrationUrl!)
-                registrationRequest?.setAuthCredentials(self.openHABUsername, password: self.openHABPassword)
-				
-				var apiManager : AFHTTPSessionManager = AFHTTPSessionManager(baseURL: registrationUrl)
-				var policy : AFSecurityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.Certificate)
-				policy.allowInvalidCertificates = true
-				apiManager.securityPolicy = policy
-
-                Alamofire.request(registrationRequest!).response({
-                    (_, response, data, error) in
-                    
-                    if error != nil {
-                        println("my.openHAB registration failed")
-                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                        println("Error:------> \(error!.description)")
-                        println("Error Code:------> \(response?.statusCode)")
-                    } else {
-                        println("my.openHAB registration sent")
-                    }
-                })
-            }
-        }
-    }
-    
-    func didEnterBackground(notification: NSNotification) {
+	
+	func didEnterBackground(notification: NSNotification) {
         println("OpenHABViewController didEnterBackground")
+		if currentPageOperation != nil {
+			currentPageOperation!.cancel()
+			currentPageOperation = nil
+		}
         UIApplication.sharedApplication().idleTimerDisabled = false
     }
     
@@ -458,11 +428,6 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         var pageToLoadUrl : NSURL = NSURL(string:self.pageUrl)!
 		
-		var apiManager : AFHTTPSessionManager = AFHTTPSessionManager(baseURL: pageToLoadUrl)
-		var policy : AFSecurityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.Certificate)
-		policy.allowInvalidCertificates = true
-		apiManager.securityPolicy = policy
-		
         var pageRequest : NSMutableURLRequest = NSMutableURLRequest(URL: pageToLoadUrl)
         pageRequest.setAuthCredentials(self.openHABUsername, password: self.openHABPassword)
         pageRequest.setValue("application/xml", forHTTPHeaderField: "Accept")
@@ -483,169 +448,158 @@ class OpenHABViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else {
             pageRequest.setValue("0", forHTTPHeaderField: "X-Atmosphere-tracking-id")
         }
-
-        Alamofire.request(pageRequest).response({
-            (_, response, data, error) in
-            
-            if error != nil {
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                println("Error:------> \(error!.description)")
-                println("Error Code:------> \(response?.statusCode)")
-                self.atmosphereTrackingId = nil
-                if error!.code == -1001 && longPolling {
-                    println("Timeout, restarting requests")
-                    self.loadPage(false)
-                } else if error!.code == -999 {
-                    // Request was cancelled
-                    println("Request was cancelled")
-                } else {
-                    // Error
-                    if error!.code == -1012 {
-                        TSMessage.showNotificationInViewController(self.navigationController, title: "Error", subtitle: "SSL Certificate Error", image: nil, type: TSMessageNotificationType.Error, duration: 5.0, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: TSMessageNotificationPosition.Bottom, canBeDismissedByUser: true)
-                    } else {
-                        TSMessage.showNotificationInViewController(self.navigationController, title: "Error", subtitle: error!.localizedDescription, image: nil, type: TSMessageNotificationType.Error, duration: 5.0, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: TSMessageNotificationPosition.Bottom, canBeDismissedByUser: true)
-                    }
-                    println("Request failed: \(error!.localizedDescription)")
-                }
-            } else {
-                println("Page loaded with success")
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                var headers : [NSObject : AnyObject] = response!.allHeaderFields
-                
-                if headers["X-Atmosphere-tracking-id"] != nil {
-                    let trackId = headers["X-Atmosphere-tracking-id"] as? String
-                    println("Found X-Atmosphere-tracking-id: \(trackId)")
-                    self.atmosphereTrackingId = trackId
-                }
-                if data != nil {
-                    var error : NSErrorPointer = NSErrorPointer()
-                    var doc : GDataXMLDocument? = GDataXMLDocument(data: data!, error: error)
-                    if doc == nil {
-                        return
-                    }
-                    
-                    println(doc!.rootElement().stringValue())
-                    
-                    println(doc!.rootElement().name())
-                    if (doc!.rootElement().name() == "page") {
-                        self.currentPage = OpenHABSitemapPage.initWithXML(doc!.rootElement())
-                    } else {
-                        println("Unable to find page root element")
-                        return
-                    }
-                    
-                    self.currentPage.delegate = self
-                    self.widgetTableView.reloadData()
-                    self.navigationItem.title = self.currentPage.title.componentsSeparatedByString("[")[0]
-                    if longPolling {
-                        self.loadPage(false)
-                    } else {
-                        self.loadPage(true)
-                    }
-                    
-                } else {
-                    return
-                }
-            }
-            
-        })
-        
-    }
-    
-    func selectSitemap() {
-		let manager = Alamofire.Manager.sharedInstance
 		
-		manager.delegate.sessionDidReceiveChallenge = { session, challenge in
-			var disposition: NSURLSessionAuthChallengeDisposition = .PerformDefaultHandling
-			var credential: NSURLCredential?
+		if currentPageOperation != nil {
+			currentPageOperation!.cancel()
+			currentPageOperation = nil
+		}
+		
+		currentPageOperation = AFHTTPRequestOperation(request: pageRequest)
+		var policy : AFSecurityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.None)
+		policy.allowInvalidCertificates = true
+		currentPageOperation.securityPolicy = policy
+		
+		currentPageOperation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
+			println("Page loaded with success")
+			UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+			var headers : [NSObject : AnyObject] = operation.response!.allHeaderFields
 			
-			if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
-				disposition = NSURLSessionAuthChallengeDisposition.UseCredential
-				credential = NSURLCredential(forTrust: challenge.protectionSpace.serverTrust)
-			} else {
-				if challenge.previousFailureCount > 0 {
-					disposition = .CancelAuthenticationChallenge
-				} else {
-					credential = manager.session.configuration.URLCredentialStorage?.defaultCredentialForProtectionSpace(challenge.protectionSpace)
-					
-					if credential != nil {
-						disposition = .UseCredential
-					}
-				}
+			if headers["X-Atmosphere-tracking-id"] != nil {
+				let trackId = headers["X-Atmosphere-tracking-id"] as? String
+				println("Found X-Atmosphere-tracking-id: \(trackId)")
+				self.atmosphereTrackingId = trackId
 			}
 			
-			return (disposition, credential)
-		}
+			var data = responseObject as? NSData
+			
+			if data != nil {
+				var error : NSErrorPointer = NSErrorPointer()
+				var doc : GDataXMLDocument? = GDataXMLDocument(data: data!, error: error)
+				if doc == nil {
+					return
+				}
+				
+				println(doc!.rootElement().stringValue())
+				
+				println(doc!.rootElement().name())
+				if (doc!.rootElement().name() == "page") {
+					self.currentPage = OpenHABSitemapPage.initWithXML(doc!.rootElement())
+				} else {
+					println("Unable to find page root element")
+					return
+				}
+				
+				self.currentPage.delegate = self
+				self.widgetTableView.reloadData()
+				self.navigationItem.title = self.currentPage.title.componentsSeparatedByString("[")[0]
+				if longPolling {
+					self.loadPage(false)
+				} else {
+					self.loadPage(true)
+				}
+				
+			} else {
+				return
+			}
+		}, failure: { (operation, error) -> Void in
+			UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+			println("Error:------> \(error!.description)")
+			println("Error Code:------> \(operation.response?.statusCode)")
+			self.atmosphereTrackingId = nil
+			if error!.code == -1001 && longPolling {
+				println("Timeout, restarting requests")
+				self.loadPage(false)
+			} else if error!.code == -999 {
+				// Request was cancelled
+				println("Request was cancelled")
+			} else {
+				// Error
+				if error!.code == -1012 {
+					TSMessage.showNotificationInViewController(self.navigationController, title: "Error", subtitle: "SSL Certificate Error", image: nil, type: TSMessageNotificationType.Error, duration: 5.0, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: TSMessageNotificationPosition.Bottom, canBeDismissedByUser: true)
+				} else {
+					TSMessage.showNotificationInViewController(self.navigationController, title: "Error", subtitle: error!.localizedDescription, image: nil, type: TSMessageNotificationType.Error, duration: 5.0, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: TSMessageNotificationPosition.Bottom, canBeDismissedByUser: true)
+				}
+				println("Request failed: \(error!.localizedDescription)")
+			}
+		})
+		
+		currentPageOperation.start()
+		
+    }
+	
+    func selectSitemap() {
+		
         var sitemapsUrlString = "\(self.openHABRootUrl)/rest/sitemaps"
         var sitemapsUrl = NSURL(string: sitemapsUrlString)
-		var apiManager : AFHTTPSessionManager = AFHTTPSessionManager(baseURL: sitemapsUrl)
-		var policy : AFSecurityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.Certificate)
-		policy.allowInvalidCertificates = true
-		apiManager.securityPolicy = policy
+		
         var sitemapsRequest = NSMutableURLRequest(URL: sitemapsUrl!)
 
         sitemapsRequest.setAuthCredentials(self.openHABUsername, password: self.openHABPassword)
-        sitemapsRequest.timeoutInterval = 25.0
-        Alamofire.request(sitemapsRequest).response({
-            (_, response, data, error) in
-            
-            if error != nil {
-                // TODO : Block para failure
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                println("Error:------> \(error!.description)")
-                println("Error Code:------> \(response?.statusCode)")
-                // Error
-                if error!.code == -1012 {
-                    TSMessage.showNotificationInViewController(self.navigationController, title: "Error", subtitle: "SSL Certificate Error", image: nil, type: TSMessageNotificationType.Error, duration: 5.0, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: TSMessageNotificationPosition.Bottom, canBeDismissedByUser: true)
-                } else {
-                    TSMessage.showNotificationInViewController(self.navigationController, title: "Error", subtitle: error!.localizedDescription, image: nil, type: TSMessageNotificationType.Error, duration: 5.0, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: TSMessageNotificationPosition.Bottom, canBeDismissedByUser: true)
-                }
-            } else {
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                self.sitemaps.removeAll(keepCapacity: false)
-                if data != nil {
-                    var error : NSErrorPointer = NSErrorPointer()
-                    println(NSString(data: data!, encoding: NSUTF8StringEncoding))
-                    var doc : GDataXMLDocument? = GDataXMLDocument(data: data!, error: error)
-                    if doc == nil {
-                        return
-                    }
-                    println(doc?.rootElement().name())
-                    if doc?.rootElement().name() == "sitemaps" {
-                        for element in doc!.rootElement().elementsForName("sitemap") {
-                            var sitemap : OpenHABSitemap = OpenHABSitemap.initWithXML(element as! GDataXMLElement)
-                            self.sitemaps.append(sitemap)
-                        }
-                    }
-                    
-                    // TODO                    [[self appData] setSitemaps:sitemaps];
-                    if self.sitemaps.count > 0 {
-                        if self.sitemaps.count > 1 {
-                            if self.defaultSitemap != nil {
-                                var sitemapToOpen : OpenHABSitemap? = self.sitemapByName(self.defaultSitemap)
-                                if sitemapToOpen != nil {
-                                    self.pageUrl = sitemapToOpen!.homepageLink
-                                    self.loadPage(false)
-                                } else {
-                                    self.navigationController?.pushViewController(OpenHABSelectSitemapViewController(), animated: true)
-                                }
-                            } else {
-                                self.navigationController?.pushViewController(OpenHABSelectSitemapViewController(), animated: true)
-                            }
-                        } else {
-                            self.pageUrl = self.sitemaps[0].homepageLink
-                            self.loadPage(false)
-                        }
-                    } else {
-                        TSMessage.showNotificationInViewController(self.navigationController, title: "Error", subtitle: "openHAB returned empty sitemap list", image: nil, type: TSMessageNotificationType.Error, duration: 5.0, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: TSMessageNotificationPosition.Bottom, canBeDismissedByUser: true)
-                    }
-                } else {
-                    return
-                }
-            }
-        })
-        
-        println("Firing request")
+        sitemapsRequest.timeoutInterval = 10.0
+		
+		var operation = AFHTTPRequestOperation(request: sitemapsRequest)
+		var policy : AFSecurityPolicy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.None)
+		policy.allowInvalidCertificates = true
+		operation.securityPolicy = policy
+		
+		operation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
+			UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+			self.sitemaps.removeAll(keepCapacity: false)
+			var data = responseObject as? NSData
+			if data != nil {
+				var error : NSErrorPointer = NSErrorPointer()
+				println(NSString(data: data!, encoding: NSUTF8StringEncoding))
+				var doc : GDataXMLDocument? = GDataXMLDocument(data: data!, error: error)
+				if doc == nil {
+					return
+				}
+				println(doc?.rootElement().name())
+				if doc?.rootElement().name() == "sitemaps" {
+					for element in doc!.rootElement().elementsForName("sitemap") {
+						var sitemap : OpenHABSitemap = OpenHABSitemap.initWithXML(element as! GDataXMLElement)
+						self.sitemaps.append(sitemap)
+					}
+				}
+				
+				// TODO                    [[self appData] setSitemaps:sitemaps];
+				if self.sitemaps.count > 0 {
+					if self.sitemaps.count > 1 {
+						if self.defaultSitemap != nil {
+							var sitemapToOpen : OpenHABSitemap? = self.sitemapByName(self.defaultSitemap)
+							if sitemapToOpen != nil {
+								self.pageUrl = sitemapToOpen!.homepageLink
+								self.loadPage(false)
+							} else {
+								self.navigationController?.pushViewController(OpenHABSelectSitemapViewController(), animated: true)
+							}
+						} else {
+							self.navigationController?.pushViewController(OpenHABSelectSitemapViewController(), animated: true)
+						}
+					} else {
+						self.pageUrl = self.sitemaps[0].homepageLink
+						self.loadPage(false)
+					}
+				} else {
+					TSMessage.showNotificationInViewController(self.navigationController, title: "Error", subtitle: "openHAB returned empty sitemap list", image: nil, type: TSMessageNotificationType.Error, duration: 5.0, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: TSMessageNotificationPosition.Bottom, canBeDismissedByUser: true)
+				}
+			} else {
+				return
+			}
+		}, failure: { (operation, error) -> Void in
+			// TODO : Block para failure
+			UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+			println("Error:------> \(error!.description)")
+			println("Error Code:------> \(operation.response?.statusCode)")
+			// Error
+			if error!.code == -1012 {
+				TSMessage.showNotificationInViewController(self.navigationController, title: "Error", subtitle: "SSL Certificate Error", image: nil, type: TSMessageNotificationType.Error, duration: 5.0, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: TSMessageNotificationPosition.Bottom, canBeDismissedByUser: true)
+			} else {
+				TSMessage.showNotificationInViewController(self.navigationController, title: "Error", subtitle: error!.localizedDescription, image: nil, type: TSMessageNotificationType.Error, duration: 5.0, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: TSMessageNotificationPosition.Bottom, canBeDismissedByUser: true)
+			}
+		})
+		
+		operation.start()
+		
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }
     
